@@ -18,6 +18,7 @@ class ClientAccount(models.Model):
     last_name = models.CharField(max_length = 50)
     gender = models.CharField(max_length = 2, choices = gender_choices)
     dob = models.DateField(null = True, blank = True)
+    nrc = models.CharField(max_length = 20, null = True, blank = True)
     marital_status = models.CharField(max_length = 1, choices = marital_status_choices, blank = True, null = True)
     telephone = models.CharField(max_length = 20, null = True, blank = True)
     email = models.CharField(max_length = 100, null = True, blank = True)
@@ -30,6 +31,9 @@ class ClientAccount(models.Model):
     mango_id = models.IntegerField(default = 10000, unique = True, null = True, blank = True)
     
     user = models.OneToOneField(User, related_name = 'profile')
+
+    def __unicode__(self):
+        return self.first_name+" "+self.last_name
     
     def save(self, *args,**kwargs):
         #Create mango ID only if first time saving
