@@ -4,5 +4,6 @@ from models import ClientAccount, CompanyAccount, ServiceAgentAccount, MedicalAg
 admin.site.register(ClientAccount)
 admin.site.register(CompanyAccount)
 admin.site.register(ServiceAgentAccount)
-admin.site.register(MedicalAgentAccount)
 admin.site.register(PoliceAgentAccount)
+admin.site.register(MedicalAgentAccount)
+
