@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'imagekit',
     'accounts',
     'filemanager',
+    'products',
     
 )
 
