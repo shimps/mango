@@ -160,8 +160,35 @@ class ServiceAgentAccount(models.Model):
     def __unicode__(self):
         return self.title
     
+agent_title_choices = (('MR','Mr'),('MRS','Mrs'),('MS','Ms'))
+#People authorized by mango to take payments
+class MangoAgent(models.Model):
 
-    
+    title = models.CharField(max_length = 3, choices = agent_title_choices, blank = True, null = True)
+    first_name = models.CharField(max_length = 50)
+    last_name = models.CharField(max_length = 50)
+    organization = models.CharField(max_length = 200, null = True, blank = True)
+    image = models.FileField(upload_to=get_upload_file_name,null=True,blank=True)
+    image_thumbnail250= ImageSpecField(source='image',
+                                       processors=[Transpose(),SmartResize(250,250)],
+                                       format='JPEG',
+                                       options={'quality':80})
+    gender = models.CharField(max_length = 2, choices = gender_choices)
+    dob = models.DateField(null = True, blank = True)
+    nrc = models.CharField(max_length = 20, null = True, blank = True)
+    marital_status = models.CharField(max_length = 1, choices = marital_status_choices, blank = True, null = True)
+    telephone = models.CharField(max_length = 20, null = True, blank = True)
+    email = models.CharField(max_length = 100, null = True, blank = True)
+    address = models.CharField(max_length = 200, null = True, blank = True)
+    city = models.CharField(max_length = 50, null = True, blank = True)
+    pobox = models.CharField(max_length = 50, null = True, blank = True)
+    province = models.CharField(max_length = 3, choices = province_choices, null = True, blank = True)
+    country = models.CharField(max_length = 2, choices = country_choices, default = 'ZM', null = True, blank = True)
+
+    user = models.OneToOneField(User, related_name = 'mango_agent_profile')
+
+    def __unicode__(self):
+        return self.first_name+' '+self.last_name + ' - '+self.organization
 
 
 
