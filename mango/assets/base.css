@@ -1,3 +1,49 @@
+#fader_box{
+	position:fixed;
+	width:100%;
+	height:100%;
+	background-color:#000000;
+	opacity:0.5;
+	top:0px;
+	left:0px;
+	z-index:4;
+	#display:none;
+}
+
+#side_menu{
+	position:fixed;
+	height:100%;
+	width:70%;
+	background-color:#455A64;
+	top:0px;
+	left:0px;
+	z-index:5;
+	font-family:'Arial';
+}
+
+#side_menu_title{
+	color:#FFFFFF;
+	width:100%;
+	box-sizing:border-box;
+	border-bottom:solid 1px #90A4AE;
+	padding:15px;
+	height:56px;
+	font-size:1em;
+}
+.side_menu_item{
+	color:#FFFFFF;
+	width:100%;
+	box-sizing:border-box;
+	border-bottom:solid 1px #90A4AE;
+	padding:15px;
+	height:56px;
+	font-size:1em;
+}
+
+.side_menu_item:active{
+	background-color:#81C784;
+}
+
 #status_bar{
 	top:0px;
 	left:0px;
