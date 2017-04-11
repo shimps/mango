@@ -17,6 +17,7 @@ province_choices = (('COP','Copperbelt'),('LUS','Lusaka'),('CEN','Central'),('NW
                     ('EAS','Eastern'),('LUA','Luapula'),('NOR','Northern'),('MUC','Muchinga'),('SOU','Southern'),
                     ('WES','Western'))
 country_choices = (('ZM','Zambia'),)
+employment_status_choices = (('E','Employed'),('U','Unemployed'),('S','Self Employed / Contractor'))
 
 # clients are individual users
 class ClientAccount(models.Model):
@@ -32,6 +33,7 @@ class ClientAccount(models.Model):
     gender = models.CharField(max_length = 2, choices = gender_choices)
     dob = models.DateField(null = True, blank = True)
     nrc = models.CharField(max_length = 20, null = True, blank = True)
+    employment_status = models.CharField(max_length = 2, choices = employment_status_choices, null = True, blank = True)
     marital_status = models.CharField(max_length = 1, choices = marital_status_choices, blank = True, null = True)
     telephone = models.CharField(max_length = 20, null = True, blank = True)
     email = models.CharField(max_length = 100, null = True, blank = True)
