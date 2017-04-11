@@ -1,0 +1,52 @@
+{% load static %}
+<html>
+
+<head>
+
+{% block page_title %}
+<title> Mango </title>
+{% endblock %}
+
+<link type="text/css" rel="stylesheet" href="{% static 'base.css'%}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</style>
+
+</head>
+
+<body>
+
+<div id="status_bar">
+
+</div>
+
+<div id="status_bar_title_box">
+<span id="left_menu_item">
+{% block left_menu_item %}
+{% include 'icons/ic_menu.html' %}
+{% endblock %}
+</span>
+<span id="status_bar_title"><img id="status_bar_icon" src="{% static 'mango_icon.png' %}" width=24/>mango</span>
+<span id="right_menu_item">
+{% block right_menu_item %}
+<!--Empty div to take up space on menu-->
+<div style="width:32px;border:solid 1px #FFFFFF"></div>
+{% endblock %}
+</span>
+</div>
+
+<div id="page_content">
+
+<div id="container">
+
+{% block container %}
+
+{% endblock container %}
+
+</div>
+
+</div>
+
+</body>
+
+</html>

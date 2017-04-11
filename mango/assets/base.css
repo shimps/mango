@@ -1,0 +1,62 @@
+#status_bar{
+	top:0px;
+	left:0px;
+	position:fixed;
+	height:56px;
+	width:100%;
+	background-color:#FFFFFF;
+	border-bottom:solid 1px #D0D0D0;
+	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
+	z-index:3;
+}
+
+#status_bar_title_box{
+	top:0px;
+	left:0px;
+	position:fixed;
+	padding-top:10px;
+	height:56px;
+	width:100%;
+	position:fixed;
+	font-family:'Arial';
+	color:#666666;
+	font-size:2em;
+	z-index:3;
+	text-align:center;
+	box-sizing:border-box;
+	padding-left:15px;
+	padding-right:15px;
+}
+
+#left_menu_item{
+	float:left;
+}
+
+#right_menu_item{
+	float:right;
+}
+
+#status_bar_icon{
+	position:relative;
+	left:-5px;
+	top:2.5px;
+}
+#status_bar_title{
+	font-family:'Arial';
+	margin:0 auto;
+}
+
+#page_content{
+	width:100%;
+	min-height:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-family:'Arial';
+	background-color:#F3F0F0;
+	
+}
+
+#container{
+	
+}
