@@ -4,4 +4,5 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 def home(request):
 
-    return render_to_response('base.html')
+    args = {}
+    return render_to_response('home.html',args)

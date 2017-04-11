@@ -1,0 +1,81 @@
+#page_banner{
+	background-color:#E0F2F1;
+	height:200px;
+}
+.section_header{
+	font-family:'Arial';
+	font-size:1em;
+	color:#666666;
+	padding-top:1em;
+	padding-bottom:0.5em;
+	padding-left:0.5em;
+	border-bottom:solid 1px #D3D0D0;
+	box-sizing:border-box;
+}
+
+#user_insurance_feed{
+	background-color:#FFFFFF;
+	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
+}
+
+.more_button{
+	font-size:0.9em;
+	text-align:center;
+	padding:10px;
+	box-sizing:border-box;
+	user-select:none;
+}
+
+.more_button:active{
+	background-color:#D3D0D0;
+}
+.user_insurance_feedlet{
+	background-color: #FFFFFF;
+	border-bottom:solid 1px #E3E0E0;
+	height:125px;
+	position:relative;
+	padding:10px;
+	box-sizing:border-box;
+}
+.user_insurance_feedlet:active{
+	background-color:#D3D0D0;
+}
+
+.user_insurance_feedlet_title{
+	color:#333333;
+	font-size:1.1em;
+}
+
+.user_insurance_feedlet_category{
+	color:#FF8F00;
+	font-size:0.9em;
+}
+
+.user_insurance_feedlet_premium{
+	color:#888888;
+	font-size:0.9em;
+}
+
+.feedlet_visit_button{
+	position:absolute;
+	font-size:1em;
+	color:#FFFFFF;
+	background-color:#26A69A;
+	border:solid 1px #009688;
+	box-sizing:border-box;
+	padding:7.5px;
+	right:10px;
+	bottom:10px;
+	display:none;
+}
+
+#user_claims_feed{
+	background-color:#FFFFFF;
+	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
+}
+
+.user_claims_feedlet{
+	background-color: #FFFFFF;
+	border-bottom:solid 1px #E3E0E0;
+	height:125px;
+}

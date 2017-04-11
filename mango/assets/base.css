@@ -14,13 +14,14 @@
 	top:0px;
 	left:0px;
 	position:fixed;
-	padding-top:10px;
+	padding-top:15px;
+	padding-bottom:15px;
 	height:56px;
 	width:100%;
 	position:fixed;
 	font-family:'Arial';
 	color:#666666;
-	font-size:2em;
+	font-size:1.3em;
 	z-index:3;
 	text-align:center;
 	box-sizing:border-box;
@@ -32,6 +33,10 @@
 	float:left;
 }
 
+#left_menu_item:active{
+	background-color:#D3D0D0;
+}
+
 #right_menu_item{
 	float:right;
 }
@@ -39,11 +44,12 @@
 #status_bar_icon{
 	position:relative;
 	left:-5px;
-	top:2.5px;
+	top:2px;
 }
 #status_bar_title{
 	font-family:'Arial';
 	margin:0 auto;
+	
 }
 
 #page_content{
@@ -58,5 +64,7 @@
 }
 
 #container{
-	
+	#padding:5px;
+	padding-top:56px;
+	box-sizing:border-box;
 }

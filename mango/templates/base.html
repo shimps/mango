@@ -7,8 +7,13 @@
 <title> Mango </title>
 {% endblock %}
 
+{% block page_header %}
+
+{% endblock %}
+
 <link type="text/css" rel="stylesheet" href="{% static 'base.css'%}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="{% static 'jquery-3.1.1.min.js' %}"/></script>
 
 </style>
 
@@ -26,7 +31,7 @@
 {% include 'icons/ic_menu.html' %}
 {% endblock %}
 </span>
-<span id="status_bar_title"><img id="status_bar_icon" src="{% static 'mango_icon.png' %}" width=24/>mango</span>
+<span id="status_bar_title"><img id="status_bar_icon" src="{% static 'mango_icon.png' %}" width=16/>mango</span>
 <span id="right_menu_item">
 {% block right_menu_item %}
 <!--Empty div to take up space on menu-->
