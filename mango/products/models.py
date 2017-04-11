@@ -53,7 +53,8 @@ class ClientPolicy(models.Model):
     
     policy = models.ForeignKey(Policy, related_name = 'client_policies')
     client = models.ForeignKey(ClientAccount, related_name = 'clients')
-    active = models.BooleanField(default = False) # has user paid? false if no or was cancelled
+    active = models.BooleanField(default = False) # has user paid?
+    cancelled = models.BooleanField(default = False) # has user cancelled?
     purchase_date = models.DateTimeField(auto_now_add = True)
     cancel_date = models.DateTimeField(null = True, blank = True)
 
@@ -62,6 +63,7 @@ class CompanyPolicy(models.Model):
 
     policy = models.ForeignKey(Policy, related_name = 'company_policies')
     company = models.ForeignKey(CompanyAccount, related_name = 'companies')
-    active = models.BooleanField(default = False) # has user paid? false if no or was cancelled
+    active = models.BooleanField(default = False) # has user paid?
+    cancelled = models.BooleanField(default = False) # has user cancelled?
     purchase_date = models.DateTimeField(auto_now_add = True)
     cancel_date = models.DateTimeField(null = True, blank = True)
