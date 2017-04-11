@@ -13,7 +13,10 @@
 
 <link type="text/css" rel="stylesheet" href="{% static 'base.css'%}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="{% static 'jquery-3.1.1.min.js' %}"/></script>
+<link rel="manifest" href="{% static 'manifest.json' %}">
+<meta name="mobile-web-app-capable" content="yes">
+<script src="{% static 'jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'base.js' %}"></script>
 
 </style>
 
@@ -31,7 +34,11 @@
 {% include 'icons/ic_menu.html' %}
 {% endblock %}
 </span>
+
+{% block mid_menu_item %}
 <span id="status_bar_title"><img id="status_bar_icon" src="{% static 'mango_icon.png' %}" width=16/>mango</span>
+{% endblock %}
+
 <span id="right_menu_item">
 {% block right_menu_item %}
 <!--Empty div to take up space on menu-->
@@ -57,11 +64,21 @@
 </div>
 
 <div id="side_menu">
-<div id="side_menu_title">
-MENU
+
+<a class="side_menu_link" href="/">
+<div class="side_menu_item">
+Home
 </div>
+</a>
+
+<a class="side_menu_link" href="/insurance/types/">
 <div class="side_menu_item">
 Buy Insurance
+</div>
+</a>
+
+<div class="side_menu_item">
+My Insurance
 </div>
 <div class="side_menu_item">
 Messages (2)

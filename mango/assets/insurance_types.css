@@ -1,0 +1,39 @@
+#section_header{
+	font-family:'Arial';
+	font-size:1em;
+	color:#666666;
+	padding-top:1em;
+	padding-bottom:0.5em;
+	padding-left:0.5em;
+	border-bottom:solid 1px #D3D0D0;
+	background-color:#FFFFFF;
+	box-sizing:border-box;
+}
+.insurance_type_feedlet{
+	width:50%;
+	background-color:#FFFFFF;
+	padding:5px;
+	box-sizing:border-box;
+	border-right:solid 1px #E3E0E0;
+	border-bottom: solid 1px #E3E0E0;
+	position:relative;
+	float:left;
+	min-height:180px;
+	text-align:center;
+	#-webkit-tap-highlight-color:#D3D0D0;
+}
+
+.insurance_type_feedlet:active{
+	background-color:#D3D0D0;
+}
+
+.insurance_type_feedlet_image{
+	width:80%;
+}
+
+.insurance_type_feedlet_title{
+	width:100%;
+	text-align:center;
+	position:absolute;
+	bottom:5px;
+}

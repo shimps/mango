@@ -1,0 +1,10 @@
+{
+  "name": "Mango",
+  "icons": [
+
+   
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

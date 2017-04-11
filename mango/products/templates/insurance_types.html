@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'insurance_types.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Choose a type</span>
+{% endblock %}
+
+{% block container %}
+
+<!--
+<br>
+<div id="section_header">
+Choose a type
+</div>
+-->
+
+<div id="insurance_type_feed">
+
+<div class="insurance_type_feedlet">
+<img class="insurance_type_feedlet_image" src="{% static 'home_insurance_icon.png' %}"/>
+<div class="insurance_type_feedlet_title">
+Home
+</div>
+</div>
+
+
+<div class="insurance_type_feedlet">
+<img class="insurance_type_feedlet_image" src="{% static 'auto_insurance_icon.png' %}"/>
+<div class="insurance_type_feedlet_title">
+Auto
+</div>
+</div>
+
+
+<div class="insurance_type_feedlet">
+<img class="insurance_type_feedlet_image" src="{% static 'health_insurance_icon.png' %}"/>
+<div class="insurance_type_feedlet_title">
+Health
+</div>
+</div>
+
+
+<div class="insurance_type_feedlet">
+<img class="insurance_type_feedlet_image" src="{% static 'business_insurance_icon.png' %}"/>
+<div class="insurance_type_feedlet_title">
+Business
+</div>
+
+</div>
+
+
+<div id="insurance_type_feed">
+
+<div class="insurance_type_feedlet">
+<img class="insurance_type_feedlet_image" src="{% static 'travel_insurance_icon.png' %}"/>
+<div class="insurance_type_feedlet_title">
+Travel
+</div>
+</div>
+
+</div>
+</div>
+
+<br>
+{% endblock %}

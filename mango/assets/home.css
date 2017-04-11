@@ -40,7 +40,7 @@
 .user_insurance_feedlet{
 	background-color: #FFFFFF;
 	border-bottom:solid 1px #E3E0E0;
-	height:125px;
+	height:145px;
 	position:relative;
 	padding:10px;
 	box-sizing:border-box;
@@ -59,9 +59,14 @@
 	font-size:0.9em;
 }
 
+.user_insurance_feedlet_company{
+	color:#4CAF50;
+	font-size:0.9em;
+}
 .user_insurance_feedlet_premium{
 	color:#888888;
 	font-size:0.9em;
+	padding-top:0.5em;
 }
 
 .feedlet_visit_button{
