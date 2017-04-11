@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models import InsuranceCompanyAccount
-# Create your models here.
 
+# Create your models here.
 insurance_category_choices = (('H','Health'),('M','Motor'),('P','Property'),('T','Travel'),('C','Commercial'))
 #insurance_subcategory_choices = (('G','General'),('V','Vision'),('D','Dental'))
 
@@ -17,19 +17,33 @@ class Policy(models.Model):
     
     insurance_company = models.ForeignKey(InsuranceCompanyAccount, related_name = 'policies', null = True, blank = True)
 
+    def __unicode__(self):
+        return "%s - %s - %s"%(title, insurance_company.title, category)
+
 # A coverage category e.g. prescription drugs, hospital services
 class CoverageType(models.Model):
+    
     title = models.CharField(max_length = 200)
     policy = models.ForeignKey(Policy, related_name = 'coverage_types')
 
+    def __unicode__(self):
+        return self.title
+
 #Details e.g. hospital services -> xrays, outpatient surgeries etc
 class CoverageDetail(models.Model):
+    
     title = models.CharField(max_length = 200)
     description = models.CharField(max_length = 200)
+    
     coverage_type = models.ForeignKey(CoverageType, related_name = 'coverage_details')
 
 #Make insurance cheaper by bundling to add coverage
 class Extras(models.Model):
+    title = models.CharField(max_length = 200)
+    description = models.CharField(max_length = 200, null = True, blank = True)
     monthly_cost = models.FloatField(default = 0)
     policy = models.ForeignKey(Policy, related_name = 'extras')
+
+    def __unicode__(self):
+        return "%s - %s - %s"%(title, policy.title, policy.insurance_company.title)
     
