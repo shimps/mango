@@ -60,7 +60,7 @@ class ClientAccount(models.Model):
         else:
             super(ClientAccount, self).save(*args, **kwargs)
 
-
+#Corporate Accounts, will be able to but insurance and add/verify employees
 class CompanyAccount(models.Model):
 
     title = models.CharField(max_length = 200)
@@ -93,7 +93,28 @@ class CompanyAccount(models.Model):
         else:
             super(CompanyAccount, self).save(*args, **kwargs)
 
+#Will be able to create policies and set prices
+class InsuranceCompanyAccount(models.Model):
 
+    title = models.CharField(max_length = 200)
+    description = models.CharField(max_length = 200,null = True, blank = True)
+    image = models.FileField(upload_to=get_upload_file_name,null=True,blank=True)
+    image_thumbnail250= ImageSpecField(source='image',
+                                       processors=[Transpose(),SmartResize(250,250)],
+                                       format='JPEG',
+                                       options={'quality':80})
+    telephone = models.CharField(max_length = 20, null = True, blank = True)
+    address = models.CharField(max_length = 200, null = True, blank = True)
+    city = models.CharField(max_length = 50, null = True, blank = True)
+    pobox = models.CharField(max_length = 50, null = True, blank = True)
+    province = models.CharField(max_length = 3, choices = province_choices, null = True, blank = True)
+    country = models.CharField(max_length = 2, choices = country_choices, default = 'ZM', null = True, blank = True)
+    
+    user = models.OneToOneField(User, related_name = 'insurance_company_profile',null = True, blank = True)
+
+    def __unicode__(self):
+        return self.title
+    
 medical_service_choices = (('C','Clinic'),('H','Hospital'),('O','Other'))
 #Hospitals, Clinincs, Private Practices etc
 class MedicalAgentAccount(models.Model):
