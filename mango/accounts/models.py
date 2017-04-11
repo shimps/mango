@@ -161,7 +161,7 @@ class ServiceAgentAccount(models.Model):
         return self.title
     
 agent_title_choices = (('MR','Mr'),('MRS','Mrs'),('MS','Ms'))
-#People authorized by mango to take payments
+#People authorized by mango to handle mango business e.g. take payments, help on user behalf etc
 class MangoAgent(models.Model):
 
     title = models.CharField(max_length = 3, choices = agent_title_choices, blank = True, null = True)
