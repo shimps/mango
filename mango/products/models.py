@@ -2,10 +2,14 @@ from django.db import models
 from accounts.models import InsuranceCompanyAccount
 # Create your models here.
 
+insurance_category_choices = (('H','Health'),('M','Motor'),('P','Property'),('T','Travel'),('C','Commercial'))
+#insurance_subcategory_choices = (('G','General'),('V','Vision'),('D','Dental'))
+
 #Basic structure of a policy
 class Policy(models.Model):
     
     title = models.CharField(max_length = 200)
+    category = models.CharField(max_length = 3, choices = insurance_category_choices)
     max_cover = models.FloatField(default = 0)
     coinsurance = models.IntegerField(default = 0)
     deductible = models.FloatField(default = 0)
