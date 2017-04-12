@@ -1,0 +1,61 @@
+#page_content{
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0px;
+	left:0px;
+}
+
+#fader_box{
+	background-color:#000000;
+	opacity:0.5;
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	z-index:2;
+	display:none;
+}
+
+#account_options_button{
+	padding:10px;
+	color:#FFFFFF;
+	background-color:#43A047;
+	box-sizing:border-box;
+	text-align:center;
+}
+
+#account_options_button:active{
+	background-color:#2E7D32;
+}
+
+#account_options_box{
+	font-family:'Arial';
+	position:fixed;
+	background-color:#FFFFFF;
+	border:solid 1px #BBBBBB;
+	border-radius:5px;
+	height:220px;
+	width:250px;
+	top:50%;
+	margin-top:-110px;
+	left:50%;
+	margin-left:-125px;
+	box-sizing:border-box;
+	z-index:3;
+	display:none;
+}
+
+
+#account_options_title{
+	border-bottom:solid 1px #BBBBBB;
+	padding:10px;
+	box-sizing:border-box;
+	text-align:center;
+}
+
+#account_options_content{
+	padding:10px;
+}
+

@@ -25,5 +25,6 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^insurance/',include(products_urls)),
+    url(r'^start/',views.start_page, name = 'start_page'),
     url(r'^$',views.home, name = 'home'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
