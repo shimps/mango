@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.contrib.auth.models import User
+from django.contrib import auth
 from accounts.models import ClientAccount, CompanyAccount, InsuranceCompanyAccount, PoliceAgentAccount, MedicalAgentAccount, InsuranceCompanyAccount, MangoAgent
 
 # Create your views here.
@@ -35,25 +36,204 @@ def registration(request):
     return HttpResponse('Something went wrong :(')
 
 def create_individual_account(request):
+
+    if request.POST:
+        
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        gender = request.POST['gender']
+        title = request.POST['title']
+        day_of_birth = request.POST['birth_day']
+        month_of_birth = request.POST['birth_month']
+        year_of_birth = request.POST['birth_year']
+        dob = '%s-%s-%s'%(year_of_birth, month_of_birth, year_of_birth)
+        
+        #Check that user exists
+        if User.objects.filter(username__iexact=username).count()>0:
+            return HttpResponse('A user with username %s already exists'%(username))
+
+        if ClientAccount.objects.filter(email__iexact=email).count()>0:
+            return HttpResponse('A user with email %s already exists'%(email))
+
+        user_object = User.objects.create(username = username, password = password)
+        ClientAccount.objects.create(title = title, first_name = first_name, last_name = last_name, email = email,
+                                     gender = gender, dob = dob, user = user_object)
+
+        authenticated_user = auth.authenticate(username = username, password = password)
+
+        if authenticated_user is not None:
+            auth.login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            return HttpResponse('error')
     
-    return HttpResponse('Individual Registration')
+        
+        
+    return HttpResponse('Something went wrong :(')
 
 def create_company_account(request):
+
+    if request.POST:
+        
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+
+        name = request.POST['name']
+        description = request.POST['description']
+
+        #Check that user exists
+        if User.objects.filter(username__iexact=username).count()>0:
+            return HttpResponse('A user with username %s already exists'%(username))
+
+        if CompanyAccount.objects.filter(email__iexact=email).count()>0:
+            return HttpResponse('A user with email %s already exists'%(email))
+
+        user_object = User.objects.create(username = username, password = password)
+        CompanyAccount.objects.create(name = name, description = description)
+
+        authenticated_user = auth.authenticate(username = username, password = password)
+
+        if authenticated_user is not None:
+            auth.login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            return HttpResponse('error')
+
     
-    return HttpResponse('Company Registration')
+    return HttpResponse('Something went wrong :(')
 
 def create_insurance_company(request):
 
-    return HtppResponse('Insurance Company Registration')
+    if request.POST:
+        
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+
+        name = request.POST['name']
+        description = request.POST['description']
+
+        #Check that user exists
+        if User.objects.filter(username__iexact=username).count()>0:
+            return HttpResponse('A user with username %s already exists'%(username))
+
+        if InsuranceCompanyAccount.objects.filter(email__iexact=email).count()>0:
+            return HttpResponse('A user with email %s already exists'%(email))
+
+        user_object = User.objects.create(username = username, password = password)
+        InsuranceCompanyAccount.objects.create(name = name, description = description)
+
+        authenticated_user = auth.authenticate(username = username, password = password)
+
+        if authenticated_user is not None:
+            auth.login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            return HttpResponse('error')
+
+
+
+    return HtppResponse('Something went wrong :(')
 
 def create_medical_account(request):
+
+    if request.POST:
+        
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+
+        name = request.POST['name']
+        description = request.POST['description']
+
+        #Check that user exists
+        if User.objects.filter(username__iexact=username).count()>0:
+            return HttpResponse('A user with username %s already exists'%(username))
+
+        if MedicalAgentAccount.objects.filter(email__iexact=email).count()>0:
+            return HttpResponse('A user with email %s already exists'%(email))
+
+        user_object = User.objects.create(username = username, password = password)
+        MedicalAgentAccount.objects.create(name = name, description = description)
+
+        authenticated_user = auth.authenticate(username = username, password = password)
+
+        if authenticated_user is not None:
+            auth.login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            return HttpResponse('error')
+
+
     
-    return HttpResponse('Medical Institution Registration')
+    return HttpResponse('Something went wrong :(')
 
 def create_police_account(request):
+
+    if request.POST:
+        
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+
+        name = request.POST['name']
+        description = request.POST['description']
+
+        #Check that user exists
+        if User.objects.filter(username__iexact=username).count()>0:
+            return HttpResponse('A user with username %s already exists'%(username))
+
+        if PoliceAgentAccount.objects.filter(email__iexact=email).count()>0:
+            return HttpResponse('A user with email %s already exists'%(email))
+
+        user_object = User.objects.create(username = username, password = password)
+        PoliceAgentAccount.objects.create(name = name, description = description)
+
+        authenticated_user = auth.authenticate(username = username, password = password)
+
+        if authenticated_user is not None:
+            auth.login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            return HttpResponse('error')
+
+
     
-    return HttpResponse('Police Account Registration')
+    return HttpResponse('Something went wrong :(')
 
 def create_service_agent_account(request):
+
+    if request.POST:
+        
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+
+        name = request.POST['name']
+        description = request.POST['description']
+
+        #Check that user exists
+        if User.objects.filter(username__iexact=username).count()>0:
+            return HttpResponse('A user with username %s already exists'%(username))
+
+        if ServiceAgentAccount.objects.filter(email__iexact=email).count()>0:
+            return HttpResponse('A user with email %s already exists'%(email))
+
+        user_object = User.objects.create(username = username, password = password)
+        ServiceAgentAccount.objects.create(name = name, description = description)
+
+        authenticated_user = auth.authenticate(username = username, password = password)
+
+        if authenticated_user is not None:
+            auth.login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            return HttpResponse('error')
+
+
     
-    return HttpResponse('Service Agent Registration')
+    return HttpResponse('Something went wrong :(')
