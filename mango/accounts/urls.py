@@ -14,19 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
-from django.contrib import admin
-from django.conf import settings
-from django.conf.urls.static import static
 from . import views
-from products import urls as products_urls
-from accounts import urls as accounts_urls
-
-admin.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^insurance/',include(products_urls)),
-    url(r'^accounts/',include(accounts_urls)),
-    url(r'^start/',views.start_page, name = 'start_page'),
-    url(r'^$',views.home, name = 'home'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^registration/$',views.registration, name = 'registration'),
+    url(r'^create_individual/$',views.create_individual_account, name = 'create_individual'),
+    url(r'^create_company/$',views.create_company, name = 'create_company'),
+    url(r'^create_medical/$',views.create_medical, name = 'create_medical'),
+    url(r'^create_police/$',views.create_police, name = 'create_police'),
+    url(r'^create_service_agent/$',views.create_service_agent, name = 'create_service_agent'),
+    ]

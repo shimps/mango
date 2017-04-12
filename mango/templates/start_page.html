@@ -68,7 +68,7 @@ NEXT
 <!--<div id="login_box_title">Log in</div>-->
 
 <div id="login_box_content">
-<form id="login_form" action="#">
+<form id="login_form" action="#" method="post">{% csrf_token %}
 <p><b>Username</b><br><input class="form_field" type="text" name="username"/></p>
 <p><b>Password</b><br><input class="form_field" type="password" name="password"/></p>
 <p><input id="login_button" type="submit" name="submit" value="Log In"/></p>
