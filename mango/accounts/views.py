@@ -49,7 +49,7 @@ def create_individual_account(request):
         day_of_birth = request.POST['birth_day']
         month_of_birth = request.POST['birth_month']
         year_of_birth = request.POST['birth_year']
-        dob = '%s-%s-%s'%(year_of_birth, month_of_birth, year_of_birth)
+        dob = '%s-%s-%s'%(year_of_birth, month_of_birth, day_of_birth)
         
         #Check that user exists
         if User.objects.filter(username__iexact=username).count()>0:
@@ -58,14 +58,14 @@ def create_individual_account(request):
         if ClientAccount.objects.filter(email__iexact=email).count()>0:
             return HttpResponse('A user with email %s already exists'%(email))
 
-        user_object = User.objects.create(username = username, password = password)
+        user_object = User.objects.create_user(username = username, password = password)
         ClientAccount.objects.create(title = title, first_name = first_name, last_name = last_name, email = email,
                                      gender = gender, dob = dob, user = user_object)
 
         authenticated_user = auth.authenticate(username = username, password = password)
 
         if authenticated_user is not None:
-            auth.login(request, user)
+            auth.login(request, authenticated_user)
             return HttpResponseRedirect('/')
         else:
             return HttpResponse('error')
@@ -92,7 +92,7 @@ def create_company_account(request):
         if CompanyAccount.objects.filter(email__iexact=email).count()>0:
             return HttpResponse('A user with email %s already exists'%(email))
 
-        user_object = User.objects.create(username = username, password = password)
+        user_object = User.objects.create_user(username = username, password = password)
         CompanyAccount.objects.create(name = name, description = description)
 
         authenticated_user = auth.authenticate(username = username, password = password)
@@ -124,7 +124,7 @@ def create_insurance_company(request):
         if InsuranceCompanyAccount.objects.filter(email__iexact=email).count()>0:
             return HttpResponse('A user with email %s already exists'%(email))
 
-        user_object = User.objects.create(username = username, password = password)
+        user_object = User.objects.create_user(username = username, password = password)
         InsuranceCompanyAccount.objects.create(name = name, description = description)
 
         authenticated_user = auth.authenticate(username = username, password = password)
@@ -157,7 +157,7 @@ def create_medical_account(request):
         if MedicalAgentAccount.objects.filter(email__iexact=email).count()>0:
             return HttpResponse('A user with email %s already exists'%(email))
 
-        user_object = User.objects.create(username = username, password = password)
+        user_object = User.objects.create_user(username = username, password = password)
         MedicalAgentAccount.objects.create(name = name, description = description)
 
         authenticated_user = auth.authenticate(username = username, password = password)
@@ -190,7 +190,7 @@ def create_police_account(request):
         if PoliceAgentAccount.objects.filter(email__iexact=email).count()>0:
             return HttpResponse('A user with email %s already exists'%(email))
 
-        user_object = User.objects.create(username = username, password = password)
+        user_object = User.objects.create_user(username = username, password = password)
         PoliceAgentAccount.objects.create(name = name, description = description)
 
         authenticated_user = auth.authenticate(username = username, password = password)
@@ -223,7 +223,7 @@ def create_service_agent_account(request):
         if ServiceAgentAccount.objects.filter(email__iexact=email).count()>0:
             return HttpResponse('A user with email %s already exists'%(email))
 
-        user_object = User.objects.create(username = username, password = password)
+        user_object = User.objects.create_user(username = username, password = password)
         ServiceAgentAccount.objects.create(name = name, description = description)
 
         authenticated_user = auth.authenticate(username = username, password = password)
