@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'registration_pages.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Individual</span>
+{% endblock %}
+
+{% block container %}
+<div id="registration_box">
+
+<form action="#" method="post">{% csrf_token %}
+
+<p>
+<b>Username</b><br>
+<input class="form_field" type="text" name="username"/>
+</p>
+
+<p>
+<b>Password</b><br>
+<input class="form_field" type="password" name="password"/>
+</p>
+
+<p>
+<b>Confirm Password</b>
+<input class="form_field" type="password" name="password_confirm"/>
+</p>
+
+<p>
+<b>Email</b>
+<input class="form_field" type="email" name="email"/>
+</p>
+
+<br>
+
+<p>
+<b>Title</b><br>
+<select class="dropdown" name="title">
+<option value="MR">Mr</option>
+<option value="MRS">Mrs</option>
+<option value="MS">Ms</option>
+</select>
+</p>
+
+<p>
+<b>First Name</b><br>
+<input class="form_field" type="text" name="first_name"/>
+</p>
+
+<p>
+<b>Last Name</b><br>
+<input class="form_field" type="text" name="last_name"/>
+</p>
+
+<p>
+<b>Gender</b><br>
+<select class="dropdown" name="gender">
+<option value="M">Male</option>
+<option value="F">Female</option>
+</select>
+</p>
+
+<p>
+<b>Date of Birth</b><br>
+<input class="form_date_field" type="text" name="birth_day" placeholder="Day"/>
+<input class="form_date_field" type="text" name="birth_month" placeholder="Month"/>
+<input class="form_date_field" type="text" name="birth_year" placeholder="Year"/>
+</p>
+
+<p>
+<label><input type="checkbox" name="terms"/>I have read and accept the terms</label>
+</p>
+
+<p><input id="create_account_button" type="submit" name="submit" value="Create Account"/></p>
+
+</form>
+
+</div>
+<br>
+{% endblock %}

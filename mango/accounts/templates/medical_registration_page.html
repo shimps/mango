@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'registration_pages.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Medical</span>
+{% endblock %}
+
+{% block container %}
+<div id="registration_box">
+
+<form action="#" method="post">{% csrf_token %}
+
+<p>
+<b>Username</b><br>
+<input class="form_field" type="text" name="username"/>
+</p>
+
+<p>
+<b>Password</b><br>
+<input class="form_field" type="password" name="password"/>
+</p>
+
+<p>
+<b>Confirm Password</b>
+<input class="form_field" type="password" name="password_confirm"/>
+</p>
+
+<p>
+<b>Email</b>
+<input class="form_field" type="email" name="email"/>
+</p>
+
+<br>
+
+<p>
+<b>Medical Institution Name</b><br>
+<input class="form_field" type="text" name="name"/>
+</p>
+
+<p>
+<b>About Institution</b><br>
+<textarea class="form_field" name="description"></textarea>
+</p>
+
+
+<p>
+<label><input type="checkbox" name="terms"/>I have read and accept the terms</label>
+</p>
+
+<p><input id="create_account_button" type="submit" name="submit" value="Create Account"/></p>
+
+</form>
+
+</div>
+<br>
+{% endblock %}

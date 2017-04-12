@@ -19,8 +19,8 @@ from . import views
 urlpatterns = [
     url(r'^registration/$',views.registration, name = 'registration'),
     url(r'^create_individual/$',views.create_individual_account, name = 'create_individual'),
-    url(r'^create_company/$',views.create_company, name = 'create_company'),
-    url(r'^create_medical/$',views.create_medical, name = 'create_medical'),
-    url(r'^create_police/$',views.create_police, name = 'create_police'),
-    url(r'^create_service_agent/$',views.create_service_agent, name = 'create_service_agent'),
+    url(r'^create_company/$',views.create_company_account, name = 'create_company'),
+    url(r'^create_medical/$',views.create_medical_account, name = 'create_medical'),
+    url(r'^create_police/$',views.create_police_account, name = 'create_police'),
+    url(r'^create_service_agent/$',views.create_service_agent_account, name = 'create_service_agent'),
     ]

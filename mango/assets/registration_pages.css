@@ -1,0 +1,45 @@
+#page_banner{
+	background-color:#FFFFFF;
+	height:200px;
+}
+
+#registration_box{
+	padding:10px;
+	background-color:#FFFFFF;
+	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
+}
+
+.form_field{
+	width:100%;
+	padding:10px;
+	font-size:1em;
+	box-sizing:border-box;
+}
+
+.form_date_field{
+	width:30%;
+	padding:10px;
+	box-sizing:border-box;
+	font-size:1em;
+}
+
+.dropdown{
+	padding:10px;
+	font-size:1em;
+	box-sizing:border-box;
+}
+
+#create_account_button{
+	margin-top:50px;
+	width:100%;
+	background-color:#FB8C00;
+	color:#FFFFFF;
+	border:solid 1px #F57C00;
+	border-radius:3px;
+	font-size:1.2em;
+	padding:15px;
+}
+
+#create_account_button:active{
+	background-color:#EF6C00;
+}
