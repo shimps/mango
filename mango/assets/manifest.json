@@ -4,7 +4,7 @@
 
    
   ],
-  "start_url": "/",
+  "start_url": "/start/",
   "display": "standalone",
   "orientation": "portrait"
 }

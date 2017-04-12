@@ -12,11 +12,12 @@
 	position:fixed;
 	top:0px;
 	left:0px;
+	-webkit-user-select:none;
 }
 
 #fader_box{
 	background-color:#000000;
-	opacity:0.5;
+	opacity:0.75;
 	position:fixed;
 	top:0px;
 	left:0px;
@@ -57,7 +58,7 @@
 	left:0px;
 }
 
-#login_button{
+#main_page_login_button{
 	text-align:center;
 	padding:12px;
 	background-color:#9E9E9E;
@@ -65,6 +66,10 @@
 	margin-top:12px;
 	border-radius:2px;
 	width:100%;
+}
+
+#main_page_login_button:active{
+	background-color:#616161;
 }
 
 #signup_button{
@@ -79,31 +84,34 @@
 	
 }
 
+#signup_button:active{
+	background-color:#EF6C00;
+}
 
 #account_options_button{
 	padding:10px;
-	color:#FFFFFF;
-	background-color:#43A047;
+	width:100%;
+	#background-color:#9E9E9E;
 	box-sizing:border-box;
 	text-align:center;
+	font-size:1em;
 }
 
-#account_options_button:active{
-	background-color:#2E7D32;
-}
+
 
 #account_options_box{
 	font-family:'Arial';
+	font-size:20px;
 	position:fixed;
 	background-color:#FFFFFF;
 	border:solid 1px #BBBBBB;
-	border-radius:5px;
-	height:220px;
-	width:250px;
+	border-radius:3px;
+	min-height:220px;
+	width:300px;
 	top:50%;
-	margin-top:-110px;
+	margin-top:-150px;
 	left:50%;
-	margin-left:-125px;
+	margin-left:-150px;
 	box-sizing:border-box;
 	z-index:3;
 	display:none;
@@ -115,9 +123,54 @@
 	padding:10px;
 	box-sizing:border-box;
 	text-align:center;
+	
 }
 
 #account_options_content{
+	padding:10px;
+}
+
+#login_box{
+	font-family:'Arial';
+	font-size:1.1em;
+	position:fixed;
+	background-color:#FFFFFF;
+	border:solid 1px #BBBBBB;
+	border-radius:3px;
+	min-height:220px;
+	width:300px;
+	top:50%;
+	margin-top:-150px;
+	left:50%;
+	margin-left:-150px;
+	box-sizing:border-box;
+	z-index:3;
+	display:none;
+}
+
+
+#login_box_title{
+	border-bottom:solid 1px #BBBBBB;
+	padding:10px;
+	box-sizing:border-box;
+	text-align:center;	
+}
+
+#login_box_content{
+	padding:10px;
+}
+
+.form_field{
+	width:100%;
+	font-family:'Arial';
+	font-size:1.1em;
+	padding:10px;
+	box-sizing:border-box;
+}
+
+#login_button{
+	width:100%;
+	font-size:1.1em;
 	padding:10px;
 }
 

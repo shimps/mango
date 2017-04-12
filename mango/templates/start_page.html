@@ -6,6 +6,8 @@
 <link type="text/css" rel="stylesheet" href="{% static 'start_page.css' %}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="manifest" href="{% static 'manifest.json' %}">
+<script type="text/javascript" src="{% static 'jquery-3.1.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'start_page.js' %}"></script>
 <meta name="mobile-web-app-capable" content="yes">
 </head>
 
@@ -31,7 +33,7 @@
 Sign Up
 </div>
 
-<div id="login_button">
+<div id="main_page_login_button">
 Log In
 </div>
 
@@ -42,22 +44,35 @@ Log In
 
 
 <div id="account_options_box">
-<div id="account_options_title">Choose Account Type</div>
+<div id="account_options_title"><b>Choose Account Type</b></div>
 
 <div id="account_options_content">
 
-<form action="#">
-<input type="radio" name="account_type" value="I" checked="checked">Individual<br>
-<input type="radio" name="account_type" value="C">Company<br>
-<input type="radio" name="account_type" value="M">Medical Institution<br>
-<input type="radio" name="account_type" value="P">Police Station<br>
-<input type="radio" name="account_type" value="S">Service Agent<br>
+<form id="account_options_form" action="#">
+<label><input type="radio" name="account_type" value="I" checked="checked">Individual</label><br>
+<label><input type="radio" name="account_type" value="C">Company</label><br>
+<label><input type="radio" name="account_type" value="M">Medical Institution</label><br>
+<label><input type="radio" name="account_type" value="P">Police Station</label><br>
+<label><input type="radio" name="account_type" value="S">Service Agent</label><br>
 </form>
 
-<div id="account_options_button">
+<button id="account_options_button">
 NEXT
+</button>
+
 </div>
 
+</div>
+
+<div id="login_box">
+<!--<div id="login_box_title">Log in</div>-->
+
+<div id="login_box_content">
+<form id="login_form" action="#">
+<p><b>Username</b><br><input class="form_field" type="text" name="username"/></p>
+<p><b>Password</b><br><input class="form_field" type="password" name="password"/></p>
+<p><input id="login_button" type="submit" name="submit" value="Log In"/></p>
+</form>
 </div>
 
 </div>
