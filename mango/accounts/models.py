@@ -71,6 +71,7 @@ class CompanyAccount(models.Model):
                                        format='JPEG',
                                        options={'quality':80})
     telephone = models.CharField(max_length = 20, null = True, blank = True)
+    email = models.CharField(max_length = 100, null = True, blank = True)
     address = models.CharField(max_length = 200, null = True, blank = True)
     city = models.CharField(max_length = 50, null = True, blank = True)
     pobox = models.CharField(max_length = 50, null = True, blank = True)
@@ -104,6 +105,7 @@ class InsuranceCompanyAccount(models.Model):
                                        format='JPEG',
                                        options={'quality':80})
     telephone = models.CharField(max_length = 20, null = True, blank = True)
+    email = models.CharField(max_length = 100, null = True, blank = True)
     address = models.CharField(max_length = 200, null = True, blank = True)
     city = models.CharField(max_length = 50, null = True, blank = True)
     pobox = models.CharField(max_length = 50, null = True, blank = True)
@@ -128,6 +130,7 @@ class MedicalAgentAccount(models.Model):
                                        format='JPEG',
                                        options={'quality':80})
     telephone = models.CharField(max_length = 20, null = True, blank = True)
+    email = models.CharField(max_length = 100, null = True, blank = True)
     address = models.CharField(max_length = 200, null = True, blank = True)
     city = models.CharField(max_length = 50, null = True, blank = True)
     pobox = models.CharField(max_length = 50, null = True, blank = True)
@@ -150,6 +153,7 @@ class PoliceAgentAccount(models.Model):
                                        format='JPEG',
                                        options={'quality':80})
     telephone = models.CharField(max_length = 20, null = True, blank = True)
+    email = models.CharField(max_length = 100, null = True, blank = True)
     address = models.CharField(max_length = 200, null = True, blank = True)
     city = models.CharField(max_length = 50, null = True, blank = True)
     pobox = models.CharField(max_length = 50, null = True, blank = True)
@@ -172,6 +176,7 @@ class ServiceAgentAccount(models.Model):
                                        format='JPEG',
                                        options={'quality':80})
     telephone = models.CharField(max_length = 20, null = True, blank = True)
+    email = models.CharField(max_length = 100, null = True, blank = True)
     address = models.CharField(max_length = 200, null = True, blank = True)
     city = models.CharField(max_length = 50, null = True, blank = True)
     pobox = models.CharField(max_length = 50, null = True, blank = True)
