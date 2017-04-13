@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'policy_list.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Policies</span>
+{% endblock %}
+
+{% block container %}
+<div class="section_header">
+{{category}} Plans
+</div>
+
+{% for policy in policies %}
+<div class="policy_feedlet">
+
+
+<div class="policy_feedlet_details">
+
+<div class="policy_feedlet_title">
+{{policy.title}}
+</div>
+
+<div class="policy_feedlet_company">
+{{policy.insurance_company.title}}
+</div>
+
+<div class="policy_feedlet_category">
+{{policy.get_category_display}}
+</div>
+
+<div class="policy_feedlet_premium">
+<b>Monthly Costs:</b> ZMW {{policy.monthly_cost|floatformat:2}}<br>
+<b>Coinsurance:</b> {{policy.coinsurance}}%<br>
+<b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}
+</div>
+
+</div>
+<div class="policy_feedlet_buttons">
+
+<div class="feedlet_visit_button">
+SHOW
+</div>
+</div>
+
+</div>
+
+{% empty %}
+
+<div class="policy_feedlet">
+There are no plans in this category
+</div>
+
+{% endfor %}
+
+{% endblock %}

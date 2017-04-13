@@ -22,6 +22,10 @@
 	display:none;
 }
 
+#side_menu a{
+	text-decoration:none;
+}
+
 #side_menu_title{
 	color:#FFFFFF;
 	width:100%;

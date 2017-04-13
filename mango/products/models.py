@@ -18,7 +18,7 @@ class Policy(models.Model):
     insurance_company = models.ForeignKey(InsuranceCompanyAccount, related_name = 'policies', null = True, blank = True)
 
     def __unicode__(self):
-        return "%s - %s - %s"%(title, insurance_company.title, category)
+        return "%s - %s - %s"%(self.title, self.insurance_company.title, self.category)
 
 # A coverage category e.g. prescription drugs, hospital services
 class CoverageType(models.Model):
@@ -46,7 +46,7 @@ class Extras(models.Model):
     policy = models.ForeignKey(Policy, related_name = 'extras')
 
     def __unicode__(self):
-        return "%s - %s - %s"%(title, policy.title, policy.insurance_company.title)
+        return "%s - %s - %s"%(self.title, self.policy.title, self.policy.insurance_company.title)
 
 #Policy an individual has chosen    
 class ClientPolicy(models.Model):

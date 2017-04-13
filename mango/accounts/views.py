@@ -35,6 +35,24 @@ def registration(request):
     
     return HttpResponse('Something went wrong :(')
 
+def login(request):
+
+    username = request.POST['username']
+    password = request.POST['password']
+
+    authenticated_user = auth.authenticate(username = username, password = password)
+
+    if authenticated_user is not None:
+        auth.login(request, authenticated_user)
+        return HttpResponseRedirect('/')
+    else:
+        return HttpResponse('login failed')
+
+def logout(request):
+
+    auth.logout(request)
+    return HttpResponseRedirect('/')
+
 def create_individual_account(request):
 
     if request.POST:

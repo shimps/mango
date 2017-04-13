@@ -18,6 +18,8 @@ from . import views
 
 urlpatterns = [
     url(r'^registration/$',views.registration, name = 'registration'),
+    url(r'^login/$',views.login, name = 'login'),
+    url(r'^logout/$',views.logout, name = 'logout'),
     url(r'^create_individual/$',views.create_individual_account, name = 'create_individual'),
     url(r'^create_company/$',views.create_company_account, name = 'create_company'),
     url(r'^create_insurance_company/$',views.create_insurance_company, name = 'create_insurance_company'),

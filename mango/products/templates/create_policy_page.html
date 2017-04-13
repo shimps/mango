@@ -1,0 +1,42 @@
+<form action="/insurance/create_policy/" method="post">{% csrf_token %}
+
+<p>
+<b>Policy Name</b><br>
+<input type="text" name="title"/>
+</p>
+
+<p>
+<b>Policy Category</b><br>
+<select name="category">
+<option value="H">Health</option>
+<option value="M">Motor</option>
+<option value="P">Property</option>
+<option value="T">Travel</option>
+<option value="C">Comeercial</option>
+</select>
+</p>
+
+<p>
+<b>Maximum Cover</b>
+<input type="text" name="max_cover"/>
+</p>
+
+<p>
+<b>Coinsurance</b><br>
+<input type="text" name="coinsurance"/>
+</p>
+
+<p>
+<b>Deductible</b><br>
+<input type="text" name="deductible"/>
+</p>
+
+<p>
+<b>Monthly Cost (Premium)</b><br>
+<input type="text" name="monthly_cost"/>
+</p>
+
+<p>
+<input type="submit" name="submit" value="submit"/>
+</p>
+</form>

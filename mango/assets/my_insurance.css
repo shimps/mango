@@ -1,0 +1,57 @@
+.section_header{
+	font-family:'Arial';
+	font-size:1em;
+	color:#666666;
+	padding-top:1em;
+	padding-bottom:0.5em;
+	padding-left:0.5em;
+	border-bottom:solid 1px #D3D0D0;
+	background-color:#FFFFFF;
+	box-sizing:border-box;
+
+}
+
+.policy_feedlet{
+	background-color: #FFFFFF;
+	border-bottom:solid 1px #E3E0E0;
+	height:145px;
+	position:relative;
+	padding:10px;
+	box-sizing:border-box;
+}
+.policy_feedlet:active{
+	background-color:#D3D0D0;
+}
+
+.policy_feedlet_title{
+	color:#333333;
+	font-size:1.1em;
+}
+
+.policy_feedlet_category{
+	color:#FF8F00;
+	font-size:0.9em;
+}
+
+.policy_feedlet_company{
+	color:#4CAF50;
+	font-size:0.9em;
+}
+.policy_feedlet_premium{
+	color:#888888;
+	font-size:0.9em;
+	padding-top:0.5em;
+}
+
+.feedlet_visit_button{
+	position:absolute;
+	font-size:1em;
+	color:#FFFFFF;
+	background-color:#26A69A;
+	border:solid 1px #009688;
+	box-sizing:border-box;
+	padding:7.5px;
+	right:10px;
+	bottom:10px;
+	display:none;
+}
