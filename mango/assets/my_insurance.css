@@ -11,6 +11,10 @@
 
 }
 
+.policy_feed{
+	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
+}
+
 .policy_feedlet{
 	background-color: #FFFFFF;
 	border-bottom:solid 1px #E3E0E0;

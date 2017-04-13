@@ -14,6 +14,7 @@
 Current Plans
 </div>
 
+<div class="policy_feed">
 {% for policy in current_policies %}
 <a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
 <div class="policy_feedlet">
@@ -57,13 +58,14 @@ You haven't added any insurance plans.
 </div>
 
 {% endfor %}
-
+</div>
 <br>
 
 <div class="section_header">
 Past Plans
 </div>
 
+<div class="policy_feed">
 {% for policy in past_policies %}
 <a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
 <div class="policy_feedlet">
@@ -106,5 +108,6 @@ You haven't added any insurance plans.
 </div>
 
 {% endfor %}
+</div>
 
 {% endblock %}

@@ -66,16 +66,20 @@
 	background-color:#FFFFFF;
 	border-bottom:solid 1px #D3D0D0;
 	padding:10px;
+	padding-top:20px;
 	box-sizing:border-box;
 	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
 }
 
 #policy_financials{
 	padding-top:10px;
+	font-size:0.9em;
+	color:#444444;
 }
 
 #policy_title{
 	font-size:1.2em;
+	color:#333333;
 }
 
 #policy_category{
@@ -93,4 +97,8 @@
 	background-color:#FFFFFF;
 	border-bottom:solid 1px #D30D0;
 	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
+}
+
+.coverage_detail{
+	
 }

@@ -37,6 +37,9 @@ class CoverageDetail(models.Model):
     
     coverage_type = models.ForeignKey(CoverageType, related_name = 'coverage_details')
 
+    def __unicode__(self):
+        return "%s - %s - %s"%(self.title,self.coverage_type.title,self.coverage_type.policy.title)
+
 #Make insurance cheaper by bundling to add coverage
 class Extras(models.Model):
     

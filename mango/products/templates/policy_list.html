@@ -14,6 +14,7 @@
 {{category}} Plans
 </div>
 
+<div id="policy_feed">
 {% for policy in policies %}
 <a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
 <div class="policy_feedlet">
@@ -56,5 +57,5 @@ There are no plans in this category
 </div>
 
 {% endfor %}
-
+</div>
 {% endblock %}

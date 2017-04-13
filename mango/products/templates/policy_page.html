@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block mid_menu_item %}
-<div id="status_bar_title">Policy</div>
+<span id="status_bar_title">Policy</span>
 {% endblock %}
 
 {% block container %}
@@ -19,7 +19,7 @@
 
 <div id="policy_financials">
 <div><b>Monthly Cost:</b> ZMW {{policy.monthly_cost|floatformat:2}}</div>
-<div><b>Coinsurance:</b> {{policy.coinsurance|floatformat:2}}%</div>
+<div><b>Coinsurance:</b> {{policy.coinsurance}}%</div>
 <div><b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}</div>
 </div>
 
@@ -32,6 +32,18 @@ Coverage
 </div>
 
 <div id="coverage_feed">
+
+{% for coverage_type in policy.coverage_types.all %}
+<div id="section_header">
+{{coverage_type.title}}
+</div>
+{% for detail in coverage_type.coverage_details.all %}
+<div class="coverage_detail">
+{{detail.title}}:{{detail.description}}
+</div>
+{% endfor %}
+
+{% endfor %}
 
 </div>
 <br>
