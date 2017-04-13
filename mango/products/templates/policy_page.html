@@ -12,6 +12,7 @@
 {% block container %}
 
 <div id="policy_header">
+<img id="policy_header_image" src="{% static 'UnitedHealthOne.png' %}"/>
 <div id="policy_title">{{policy.title}}</div>
 <div id="policy_company">{{policy.insurance_company}}</div>
 <div id="policy_category">{{policy.get_category_display}}</div>
@@ -23,23 +24,29 @@
 <div><b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}</div>
 </div>
 
+<br>
+<div id="policy_apply_button">
+Apply for this plan
+</div>
+
+
 </div>
 
 <br>
 
-<div class="section_header">
-Coverage
+<div class="section_headers">
+
 </div>
 
 <div id="coverage_feed">
 
 {% for coverage_type in policy.coverage_types.all %}
-<div id="section_header">
-{{coverage_type.title}}
+<div class="coverage_section_header">
+<b>{{coverage_type.title}}</b>
 </div>
 {% for detail in coverage_type.coverage_details.all %}
 <div class="coverage_detail">
-{{detail.title}}:{{detail.description}}
+<b>{{detail.title}}</b>: {{detail.description}}
 </div>
 {% endfor %}
 
