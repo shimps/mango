@@ -7,9 +7,7 @@
 <title> Mango </title>
 {% endblock %}
 
-{% block page_header %}
 
-{% endblock %}
 
 <link type="text/css" rel="stylesheet" href="{% static 'base.css'%}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +15,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 <script src="{% static 'jquery-3.1.1.min.js' %}"></script>
 <script src="{% static 'base.js' %}"></script>
+{% block page_header %}
+
+{% endblock %}
 
 </style>
 

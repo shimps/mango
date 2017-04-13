@@ -10,6 +10,33 @@
 {% endblock %}
 
 {% block container %}
+<div class="section_header">
+Insurance Application Forms
+</div>
 
+<div id="insurance_application_feed">
+{% for form in application_forms %}
+
+{% empty %}
+<div class="application_feedlet">
+There are no saved forms.
+</div>
+{% endfor %}
+</div>
+
+<br>
+<div class="section_header">
+Insurance Claim Forms
+</div>
+
+<div id="insurance_claim_feed">
+{% for form in claim_forms %}
+
+{% empty %}
+<div class="claim_feedlet">
+There are no saved forms.
+</div>
+{% endfor %}
+</div>
 
 {% endblock %}
