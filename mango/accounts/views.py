@@ -98,7 +98,7 @@ def create_company_account(request):
         authenticated_user = auth.authenticate(username = username, password = password)
 
         if authenticated_user is not None:
-            auth.login(request, user)
+            auth.login(request, authenticated_user)
             return HttpResponseRedirect('/')
         else:
             return HttpResponse('error')
@@ -130,7 +130,7 @@ def create_insurance_company(request):
         authenticated_user = auth.authenticate(username = username, password = password)
 
         if authenticated_user is not None:
-            auth.login(request, user)
+            auth.login(request, authenticated_user)
             return HttpResponseRedirect('/')
         else:
             return HttpResponse('error')
@@ -163,7 +163,7 @@ def create_medical_account(request):
         authenticated_user = auth.authenticate(username = username, password = password)
 
         if authenticated_user is not None:
-            auth.login(request, user)
+            auth.login(request, authenticated_user)
             return HttpResponseRedirect('/')
         else:
             return HttpResponse('error')
@@ -196,7 +196,7 @@ def create_police_account(request):
         authenticated_user = auth.authenticate(username = username, password = password)
 
         if authenticated_user is not None:
-            auth.login(request, user)
+            auth.login(request, authenticated_user)
             return HttpResponseRedirect('/')
         else:
             return HttpResponse('error')
@@ -229,7 +229,7 @@ def create_service_agent_account(request):
         authenticated_user = auth.authenticate(username = username, password = password)
 
         if authenticated_user is not None:
-            auth.login(request, user)
+            auth.login(request, authenticated_user)
             return HttpResponseRedirect('/')
         else:
             return HttpResponse('error')
