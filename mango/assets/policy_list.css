@@ -43,6 +43,10 @@
 	padding-top:0.5em;
 }
 
+.policy_feedlet_link{
+	text-decoration:none;
+}
+
 .feedlet_visit_button{
 	position:absolute;
 	font-size:1em;

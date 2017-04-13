@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^types/$',views.insurance_types, name = 'types'),
     url(r'^my/$',views.my_insurance, name = 'my_insurance'),
     url(r'^create_policy/$',views.create_policy, name = 'create_policy'),
+    url(r'^policy/$',views.view_policy, name = 'view_policy'),
     url(r'^policies/$',views.view_policies, name = 'view_policies'),
     ]

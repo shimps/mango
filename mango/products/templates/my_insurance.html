@@ -15,6 +15,7 @@ Current Plans
 </div>
 
 {% for policy in current_policies %}
+<a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
 <div class="policy_feedlet">
 
 
@@ -47,6 +48,7 @@ SHOW
 </div>
 
 </div>
+</a>
 
 {% empty %}
 
@@ -63,6 +65,7 @@ Past Plans
 </div>
 
 {% for policy in past_policies %}
+<a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
 <div class="policy_feedlet">
 
 
@@ -95,7 +98,7 @@ SHOW
 </div>
 
 </div>
-
+</a>
 {% empty %}
 
 <div class="policy_feedlet">

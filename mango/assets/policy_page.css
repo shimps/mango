@@ -59,3 +59,38 @@
 	bottom:10px;
 	display:none;
 }
+
+
+#policy_header{
+	min-height:200px;
+	background-color:#FFFFFF;
+	border-bottom:solid 1px #D3D0D0;
+	padding:10px;
+	box-sizing:border-box;
+	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
+}
+
+#policy_financials{
+	padding-top:10px;
+}
+
+#policy_title{
+	font-size:1.2em;
+}
+
+#policy_category{
+	color:#FF8F00;
+	font-size:0.9em;
+}
+
+#policy_company{
+	color:#4CAF50;
+	font-size:0.9em;
+}
+
+#coverage_feed{
+	min-height:200px;
+	background-color:#FFFFFF;
+	border-bottom:solid 1px #D30D0;
+	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
+}

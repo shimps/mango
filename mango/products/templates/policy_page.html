@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'policy_page.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<div id="status_bar_title">Policy</div>
+{% endblock %}
+
+{% block container %}
+
+<div id="policy_header">
+<div id="policy_title">{{policy.title}}</div>
+<div id="policy_company">{{policy.insurance_company}}</div>
+<div id="policy_category">{{policy.get_category_display}}</div>
+
+
+<div id="policy_financials">
+<div><b>Monthly Cost:</b> ZMW {{policy.monthly_cost|floatformat:2}}</div>
+<div><b>Coinsurance:</b> {{policy.coinsurance|floatformat:2}}%</div>
+<div><b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}</div>
+</div>
+
+</div>
+
+<br>
+
+<div class="section_header">
+Coverage
+</div>
+
+<div id="coverage_feed">
+
+</div>
+<br>
+
+{% endblock %}

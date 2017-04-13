@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.context_processors import csrf
 from models import Policy
 from accounts.models import InsuranceCompanyAccount
-from products.models import insurance_category_choices
+from products.models import Policy, insurance_category_choices
 
 # Create your views here.
 def insurance_types(request):
@@ -35,6 +35,15 @@ def create_policy(request):
     args = {}
     args.update(csrf(request))
     return render_to_response('create_policy_page.html',args)
+
+def view_policy(request):
+
+    policy_id = request.GET.get('policy_id')
+    policy = Policy.objects.get(id = policy_id)
+    
+    args = {}
+    args['policy'] = policy
+    return render_to_response('policy_page.html',args)
 
 def get_category_string(category_letter):
     for category in insurance_category_choices:

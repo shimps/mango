@@ -20,8 +20,10 @@ def start_page(request):
 
 def settings(request):
 
-    return HttpResponse('settings')
+    args = {}
+    return render_to_response('settings.html',args)
 
 def in_progress(request):
 
-    return HttpResponse('in progress')
+    args = {}
+    return render_to_response('in_progress_page.html',args)
