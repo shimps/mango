@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'payment_options.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Payment Options</span>
+{% endblock %}
+
+{% block container %}
+
+<div class="section_header">
+Choose how you want to pay
+</div>
+
+<div id="payment_options_feed">
+
+<div class="payment_options_feedlet">
+Cash
+</div>
+
+<div class="payment_options_feedlet">
+Debit Card
+</div>
+
+<div class="payment_options_feedlet">
+Zoona
+</div>
+
+<div class="payment_options_feedlet">
+MTN Mobile Money
+</div>
+
+<div class="payment_options_feedlet">
+Airtel Money
+</div>
+
+<div class="payment_options_feedlet">
+Talk Time
+</div>
+
+<div class="payment_options_feedlet">
+Western Union
+</div>
+
+<div class="payment_options_feedlet">
+Paypal
+</div>
+
+</div>
+<br>
+
+{% endblock %}

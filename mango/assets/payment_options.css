@@ -1,0 +1,30 @@
+.section_header{
+	font-family:'Arial';
+	font-size:1em;
+	color:#666666;
+	padding-top:1em;
+	padding-bottom:0.5em;
+	padding-left:0.5em;
+	border-bottom:solid 1px #D3D0D0;
+	background-color:#FFFFFF;
+	box-sizing:border-box;
+
+}
+
+#payment_options_feed{
+	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
+}
+
+.payment_options_feedlet{
+	background-color: #FFFFFF;
+	border-bottom:solid 1px #E3E0E0;
+	position:relative;
+	padding:10px;
+	padding-top:20px;
+	padding-bottom:20px;
+	box-sizing:border-box;
+}
+
+.payment_options_feedlet:active{
+	background-color:#D3D0D0;
+}

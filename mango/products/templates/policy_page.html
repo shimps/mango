@@ -13,7 +13,7 @@
 {% block container %}
 
 <div id="policy_header">
-<img id="policy_header_image" src="{% static 'UnitedHealthOne.png' %}"/>
+<img id="policy_header_image" src="{{policy.insurance_company.image.url}}"/>
 <div id="policy_title">{{policy.title}}</div>
 <div id="policy_company">{{policy.insurance_company}}</div>
 <div id="policy_category">{{policy.get_category_display}}</div>

@@ -74,3 +74,9 @@ def view_policies(request):
     args['policies'] = policies
     args['category'] = category
     return render_to_response('policy_list.html',args)
+
+def view_payment_options(request):
+
+    args = {}
+    return render_to_response('payment_options.html',args)
+    
