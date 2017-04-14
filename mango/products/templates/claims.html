@@ -11,7 +11,41 @@
 
 {% block container %}
 
+<div class="section_header">
+Pending Claims
+</div>
 
+<div class="claim_feed" id="pending_cliam_feed">
+{% for claim in pending_claims %}
+<div class="claim_feedlet">
+
+</div>
+{% empty %}
+<div class="claim_feedlet">
+
+</div>
+
+{% endfor %}
+</div>
+
+<br>
+
+<div class="section_header">
+Completed Claims
+</div>
+
+<div class="claim_feed" id="completed_cliam_feed">
+{% for claim in completed_claims %}
+<div class="claim_feedlet">
+There aren't any completed claims.
+</div>
+{% empty %}
+<div class="claim_feedlet">
+There aren't any past claims.
+</div>
+
+{% endfor %}
+</div>
 <br>
 
 {% endblock %}

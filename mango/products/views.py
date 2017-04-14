@@ -45,6 +45,10 @@ def view_policy(request):
     args['policy'] = policy
     return render_to_response('policy_page.html',args)
 
+def view_claims(request):
+    args = {}
+    return render_to_response('claims.html',args)
+
 def get_category_string(category_letter):
     for category in insurance_category_choices:
         if category[0] == category_letter:
