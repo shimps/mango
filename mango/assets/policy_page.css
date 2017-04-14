@@ -158,3 +158,34 @@
 	font-size:0.8em;
 	#border-bottom:solid 1px #666666;
 }
+
+#policy_options_box{
+	position:fixed;
+	font-family:'Arial';
+	left:50%;
+	top:50%;
+	width:300px;
+	margin-left:-150px;
+	background-color:#FFFFFF;
+	margin-top:-150px;
+	border:solid 1px #E3E0E0;
+	z-index:5;
+	display:none;
+}
+
+.policy_option{
+	color:#000000;
+	padding:10px;
+	padding-top:20px;
+	padding-bottom:20px;
+	border-bottom:solid 1px #E3E0E0;
+}
+
+
+.policy_option:active{
+	background-color:#D3D0D0;
+}
+
+.policy_option_link{
+	text-decoration:none;
+}

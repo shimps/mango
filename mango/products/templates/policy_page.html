@@ -10,6 +10,10 @@
 <span id="status_bar_title">Policy</span>
 {% endblock %}
 
+{% block right_menu_item %}
+{% include 'icons/ic_share.html' %}
+{% endblock %}
+
 {% block container %}
 
 <div id="policy_header">
@@ -60,4 +64,26 @@ Apply for this plan
 </div>
 <br>
 
+{% endblock %}
+
+{% block extra_floating_boxes %}
+<div id="policy_options_box">
+
+<a class="policy_option_link" href="/insurance/payment_options/?policy_id={{policy.id}}">
+<div class="policy_option">
+Pay your Premium
+</div>
+</a>
+
+<a class="policy_option_link" href="/insurance/make_claim/?policy_id={{policy.id}}">
+<div class="policy_option">
+Make a Claim
+</div>
+</a>
+
+<div class="policy_option">
+Ask a Question
+</div>
+
+</div>
 {% endblock %}
