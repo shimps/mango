@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from . import views
 from products import urls as products_urls
 from accounts import urls as accounts_urls
+from message_system import urls as message_urls
 
 admin.autodiscover()
 
@@ -27,9 +28,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^insurance/',include(products_urls)),
     url(r'^accounts/',include(accounts_urls)),
+    url(r'^messages/',include(message_urls)),
     url(r'^start/',views.start_page, name = 'start_page'),
     url(r'^settings/$',views.settings, name = 'settings'),
     url(r'^in_progress/$',views.in_progress, name = 'in_progress'),
-    url(r'^messages/$',views.messages, name = 'messages'),
     url(r'^$',views.home, name = 'home'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

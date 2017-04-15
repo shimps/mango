@@ -11,8 +11,10 @@
 }
 .insurance_type_feedlet{
 	width:50%;
+	color:#000000;
 	background-color:#FFFFFF;
 	padding:5px;
+	padding-top:15px;
 	box-sizing:border-box;
 	border-right:solid 1px #E3E0E0;
 	border-bottom: solid 1px #E3E0E0;
@@ -24,6 +26,7 @@
 }
 
 .insurance_type_feedlet:active{
+	
 	background-color:#D3D0D0;
 }
 
