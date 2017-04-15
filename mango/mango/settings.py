@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'accounts',
     'filemanager',
     'products',
+    'message_system',
     
 )
 

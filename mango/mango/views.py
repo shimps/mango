@@ -27,3 +27,8 @@ def in_progress(request):
 
     args = {}
     return render_to_response('in_progress_page.html',args)
+
+def messages(request):
+
+    args = {}
+    return render_to_response('messages.html',args)
