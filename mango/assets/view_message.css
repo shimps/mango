@@ -50,3 +50,7 @@
 	font-size:1.2em;
 	padding:15px;
 }
+
+#send_message_button:active{
+	background-color:#EF6C00;
+}

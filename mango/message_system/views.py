@@ -26,7 +26,7 @@ def view_message(request):
     message_id = request.GET.get('message_id')
     message = Message.objects.get(id = message_id)
 
-    if message.sender != request.user or message.receiver != request.user:
+    if message.sender != request.user and message.receiver != request.user:
         return HttpResponse('You are not allowed to view this message')
 
     args = {}
@@ -59,4 +59,28 @@ def ask_question(request):
         return render_to_response('ask_question.html',args)
     except:
         
+        return HttpResponse('Something went wrong :(')
+
+def reply(request):
+
+    if request.POST:
+        message_id = request.GET.get('message_id')
+        message = Message.objects.get(id=message_id)
+        body = request.POST['message']
+
+        subject = "Re: %s"%message.subject
+
+        if message.sender == request.user:
+            sender = request.user
+            receiver = message.receiver
+        else:
+            sender = request.user
+            receiver = message.sender
+            
+
+        Message.objects.create(sender = sender, receiver = receiver,
+                               body = body, subject = subject)
+
+        return HttpResponseRedirect('/messages/inbox/')
+    else:
         return HttpResponse('Something went wrong :(')

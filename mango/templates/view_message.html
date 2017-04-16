@@ -25,7 +25,7 @@
 
 <div id="reply_box"><b>Reply</b><br>
 
-<form id="message_form" action="">{% csrf_token %}
+<form id="message_form" action="/messages/reply/?message_id={{message.id}}" method="post">{% csrf_token %}
 <p>
 <textarea id="message_field" class="form_field" name="message"></textarea>
 </p>
