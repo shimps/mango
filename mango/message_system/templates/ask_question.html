@@ -18,7 +18,7 @@ Ask the insurance company
 
 <div id="question_box">
 
-<form action="/messages/send/" method="post">{% csrf_token %}
+<form action="/messages/ask/?policy_id={{policy.id}}" method="post">{% csrf_token %}
 <div class="form_section"><b>Subject: </b> Question about {{policy.title}}</div>
 <div class="form_section"><b>To: </b>{{policy.insurance_company.title}}</div>
 <p class="form_section"><b>Message</b><br>

@@ -16,13 +16,15 @@ def ask_question(request):
         if request.POST:
             message = request.POST['message']
             policy_id = request.GET.get('policy_id')
+            policy_id = int(policy_id)
+            print "Policy id: %s Type: %s"%(policy_id,type(policy_id))
             policy = Policy.objects.get(id=policy_id)
             insurance_company_user = policy.insurance_company.user
             subject = 'Question about %s'%(policy.title)
             
             Message.objects.create(sender = request.user, receiver = insurance_company_user,
                                    body = message, subject = subject)
-            return HttpResponseRedirect('/insurance/policy/?policy_id=%s')
+            return HttpResponseRedirect('/insurance/policy/?policy_id=%s'%policy_id)
         
         policy_id = request.GET.get('policy_id')
         policy = Policy.objects.get(id = policy_id)
@@ -32,4 +34,5 @@ def ask_question(request):
         args['policy'] = policy
         return render_to_response('ask_question.html',args)
     except:
+        raise
         return HttpResponse('Something went wrong :(')
