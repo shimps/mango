@@ -49,6 +49,11 @@ def view_claims(request):
     args = {}
     return render_to_response('claims.html',args)
 
+def make_claim(request):
+
+    args = {}
+    return render_to_response('make_claim.html',args)
+
 def get_category_string(category_letter):
     for category in insurance_category_choices:
         if category[0] == category_letter:

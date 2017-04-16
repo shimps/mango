@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'ask_question.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Ask Question</span>
+{% endblock %}
+
+
+
+{% block container %}
+<div class="section_header">
+Ask the insurance company
+</div>
+
+<div id="question_box">
+
+<form action="/messages/send/" method="post">{% csrf_token %}
+<div class="form_section"><b>Subject: </b> Question about {{policy.title}}</div>
+<div class="form_section"><b>To: </b>{{policy.insurance_company.title}}</div>
+<p class="form_section"><b>Message</b><br>
+<textarea id="message_box" class="form_field" name="message"></textarea>
+</p>
+<p>
+<input id="send_message_button" type="submit" name="submit" value="Send Message"/>
+</p>
+</form>
+
+</div>
+
+<br>
+
+{% endblock %}
+

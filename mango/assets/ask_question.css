@@ -1,0 +1,43 @@
+.section_header{
+	font-family:'Arial';
+	font-size:1em;
+	color:#666666;
+	padding-top:1em;
+	padding-bottom:0.5em;
+	padding-left:0.5em;
+	border-bottom:solid 1px #D3D0D0;
+	background-color:#FFFFFF;
+	box-sizing:border-box;
+
+}
+
+#question_box{
+	padding:10px;
+	min-height:500px;
+	background-color:#FFFFFF;
+	box-shadow: 0px 2.5px 2.5px rgba(148, 148, 148, 0.32);
+}
+
+.form_section{
+	padding:5px;
+	font-size:1.1em;
+}
+
+.form_field{
+	width:100%;
+	padding:10px;
+	font-size:1em;
+	box-sizing:border-box;
+	font-size:1.2em;
+	min-height:200px;
+}
+
+#send_message_button{
+	width:100%;
+	background-color:#FB8C00;
+	color:#FFFFFF;
+	border:solid 1px #F57C00;
+	border-radius:3px;
+	font-size:1.2em;
+	padding:15px;
+}

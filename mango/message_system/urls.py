@@ -18,4 +18,5 @@ from . import views
 
 urlpatterns = [
     url(r'^view/$',views.view_messages, name = 'view_messages'),
+    url(r'^ask/$',views.ask_question, name = 'ask_question'),
     ]
