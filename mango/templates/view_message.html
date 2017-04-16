@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'view_message.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Message</span>
+{% endblock %}
+
+
+
+{% block container %}
+
+<div id="message_box">
+<div id="message_subject" class="message_section">{{message.subject}}</div>
+<div class="message_section"><b>From</b>: {{message.sender}}</div>
+<div class="message_section"><b>To</b>: {{message.receiver}}</div>
+
+<div id="message_body">
+{{message.body}}
+</div>
+
+
+<div id="reply_box"><b>Reply</b><br>
+
+<form id="message_form" action="">{% csrf_token %}
+<p>
+<textarea id="message_field" class="form_field" name="message"></textarea>
+</p>
+<p>
+<input id="send_message_button" type="submit" name="submit" value="Send Message"/>
+</p>
+
+</form>
+
+</div>
+
+</div>
+
+<br>
+
+{% endblock %}
+

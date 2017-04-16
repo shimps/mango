@@ -47,6 +47,10 @@
 	box-sizing:border-box;
 }
 
+.message_feedlet_link{
+	text-decoration:none;
+}
+
 .message_section{
 	padding-top:2.5px;
 	padding-bottom:2.5px;

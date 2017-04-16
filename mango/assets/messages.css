@@ -27,6 +27,7 @@
 	color:#666666;
 }
 
+
 #inbox_button{
 	#border-right:solid 1px #E3E0E0;
 	background-color:#D3D0D0;
@@ -41,6 +42,10 @@
 	padding-top:10px;
 	padding-bottom:10px;
 	box-sizing:border-box;
+}
+
+.message_feedlet_link{
+	text-decoration:none;
 }
 
 .message_section{

@@ -28,6 +28,7 @@ Outbox
 <div id="message_feed">
 {% for message in messages %}
 
+<a class="message_feedlet_link" href="/messages/view/?message_id={{message.id}}">
 <div class="message_feedlet">
 
 <div class="sender_box" class="message_section">
@@ -43,6 +44,7 @@ Outbox
 </div>
 
 </div>
+</a>
 
 {% empty %}
 <div class="message_feedlet">

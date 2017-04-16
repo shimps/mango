@@ -21,6 +21,20 @@ def view_outbox(request):
     args['page_type'] = 'outbox'
     return render_to_response('messages_outbox.html',args)
 
+def view_message(request):
+
+    message_id = request.GET.get('message_id')
+    message = Message.objects.get(id = message_id)
+
+    if message.sender != request.user or message.receiver != request.user:
+        return HttpResponse('You are not allowed to view this message')
+
+    args = {}
+    args.update(csrf(request))
+    args['message'] = message
+
+    return render_to_response('view_message.html',args)
+
 def ask_question(request):
 
     try:

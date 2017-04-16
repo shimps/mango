@@ -19,5 +19,6 @@ from . import views
 urlpatterns = [
     url(r'^inbox/$',views.view_inbox, name = 'view_inbox'),
     url(r'^outbox/$',views.view_outbox, name = 'view_outbox'),
+    url(r'^view/$',views.view_message, name = 'view_message'),
     url(r'^ask/$',views.ask_question, name = 'ask_question'),
     ]
