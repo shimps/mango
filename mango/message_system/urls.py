@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from . import views
 
 urlpatterns = [
-    url(r'^view/$',views.view_messages, name = 'view_messages'),
+    url(r'^inbox/$',views.view_inbox, name = 'view_inbox'),
+    url(r'^outbox/$',views.view_outbox, name = 'view_outbox'),
     url(r'^ask/$',views.ask_question, name = 'ask_question'),
     ]

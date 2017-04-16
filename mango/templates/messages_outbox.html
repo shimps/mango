@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_header %}
-<link type="text/css" rel="stylesheet" href="{% static 'messages.css'%}"/>
+<link type="text/css" rel="stylesheet" href="{% static 'messages_outbox.css'%}"/>
 {% endblock %}
 
 {% block mid_menu_item %}
@@ -14,17 +14,15 @@
 {% block container %}
 <div class="section_header">
 
-<a class="section_header_link">
+<a class="section_header_link" href="/messages/inbox/">
 <div class="section_header_button" id="inbox_button">
 Inbox
 </div>
 </a>
 
-<a class="section_header_link" href="/messages/outbox/">
 <div class="section_header_button" id="outbox_button">
 Outbox
 </div>
-</a>
 
 </div>
 <div id="message_feed">
@@ -33,7 +31,7 @@ Outbox
 <div class="message_feedlet">
 
 <div class="sender_box" class="message_section">
-{{message.sender|truncatechars:40}}
+{{message.receiver|truncatechars:40}}
 </div>
 
 <div class="message_section">

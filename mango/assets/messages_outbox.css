@@ -16,6 +16,7 @@
 	font-size:1.2em;
 	padding-top:10px;
 	padding-bottom:10px;
+	color:#666666;
 }
 
 .section_header_button:active{
@@ -24,11 +25,14 @@
 
 .section_header_link{
 	text-decoration:none;
-	color:#666666;
+	col
 }
 
 #inbox_button{
-	#border-right:solid 1px #E3E0E0;
+	
+}
+
+#outbox_button{
 	background-color:#D3D0D0;
 }
 

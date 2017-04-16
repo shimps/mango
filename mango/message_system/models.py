@@ -12,3 +12,5 @@ class Message(models.Model):
 
     def __unicode__(self):
         return "From: %s to %s - Subject: %s - Date: %s"%(self.sender,self.receiver,self.subject,self.date_sent)
+
+
