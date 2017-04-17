@@ -49,10 +49,29 @@ SHOW
 
 </div>
 
+{% for policy in my_policies %}
+<a class="user_insurance_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
 <div class="user_insurance_feedlet">
 
 <div class="user_insurance_feedlet_details">
 
+<div class="user_insurance_feedlet_title">
+{{policy.title}}
+</div>
+
+<div class="user_insurance_feedlet_company">
+{{policy.insurance_company.title}}
+</div>
+
+<div class="user_insurance_feedlet_category">
+{{policy.get_category_display}}
+</div>
+
+<div class="user_insurance_feedlet_premium">
+<b>Monthly Costs:</b> ZMW {{policy.monthly_cost}}<br>
+<b>Coinsurance:</b> {{policy.coinsurance}}%<br>
+<b>Deductible:</b> ZMW {{policy.deductible}}
+</div>
 
 </div>
 <div class="user_insurance_feedlet_buttons">
@@ -63,8 +82,18 @@ SHOW
 </div>
 
 </div>
+</a>
 
+{% empty %}
+<div class="user_insurance_feedlet">
 
+<div class="user_insurance_feedlet_details">
+There are no pending claims.
+</div>
+
+</div>
+
+{% endfor %}
 <div class="more_button">
 MORE
 </div>

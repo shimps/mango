@@ -9,12 +9,189 @@
 <span id="status_bar_title">Make a Claim</span>
 {% endblock %}
 
-
+{% block right_menu_item %}
+{% include 'icons/ic_share.html' %}
+{% endblock %}
 
 {% block container %}
 
 <div id="claim_box">
 
+<form action="#" method="post">{% csrf_token %}
+
+<div class="section_header">
+<b>Policy Holder Information</b>
+</div>
+
+<div class="form_section">
+
+<p>
+<select class="dropdown_menu">
+<option value="MR">Mr</option>
+<option value="MRS">Mrs</option>
+<option value="MS">Ms</option>
+</select>
+</p>
+
+<p><b>First Name</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Last Name</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Address</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>City / Town</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Country</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Phone Number</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Email Address</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+</div>
+
+<div class="section_header">
+<b>Payment Details</b>
+</div>
+
+<div class="form_section">
+<p>Some Payment Details...</p>
+</div>
+
+<div class="section_header">
+<b>Vehicle Information</b>
+</div>
+<div class="form_section">
+
+<p><b>Registration Number</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Make</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Model</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Registration Date</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+</div>
+
+
+<div class="section_header">
+<b>Details of Accident</b>
+</div>
+
+<div class="form_section">
+
+<p><b>Date</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Time</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Place</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Police Station</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Name of Garage</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Loss Estimate Cost</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>No. of people in vehicle at accident</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+</div>
+
+<div class="section_header">
+<b>Driver Details</b>
+</div>
+
+<div class="form_section">
+<p><b>Name of Driver</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Date of Birth</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>License No.</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>License Expiry</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Vehicle Authorization</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+</div>
+
+<div class="section_header">
+<b>Details of Any Other Insurance Covering Vehicle</b>
+</div>
+
+<div class="form_section">
+<p><b>Name of Insurance Company</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Insurance Policy No.</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Insurance Start Date</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Insurance End Date</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+</div>
+
+<div class="form_section">
+<!--
+<div id="submit_claim_button">
+Submit Claim
+</div>
+-->
+
+<input id="submit_claim_button" type="submit" name="submit" value="Submit Claim"/>
+</div>
+
+</form>
 
 </div>
 

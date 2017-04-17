@@ -52,6 +52,7 @@ def view_claims(request):
 def make_claim(request):
 
     args = {}
+    args.update(csrf(request))
     return render_to_response('make_claim.html',args)
 
 def get_category_string(category_letter):
