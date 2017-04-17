@@ -115,6 +115,10 @@
 	background-color:#EF6C00;
 }
 
+#policy_apply_button_link{
+	text-decoration:none;
+}
+
 #policy_management_box{
 	width:100%;
 }

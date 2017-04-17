@@ -45,6 +45,17 @@ def view_policy(request):
     args['policy'] = policy
     return render_to_response('policy_page.html',args)
 
+def apply_for_policy(request):
+
+    policy_id = request.GET.get('policy_id')
+    policy = Policy.objects.get(id=policy_id)
+
+    args = {}
+    args.update(csrf(request))
+    args['policy'] = policy
+    
+    return render_to_response('policy_apply.html',args)
+
 def view_claims(request):
     args = {}
     return render_to_response('claims.html',args)
@@ -59,7 +70,7 @@ def save_claim(request):
 
     args = {}
 
-    return HttpResponse('/insurance/claims/')
+    return HttpResponseRedirect('/insurance/claims/')
 
 def get_category_string(category_letter):
     for category in insurance_category_choices:

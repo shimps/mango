@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'policy_apply.css'%}"/>
+<script type="text/javascript" src="{% static 'policy_apply.js' %}"></script>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Make a Claim</span>
+{% endblock %}
+
+{% block right_menu_item %}
+{% include 'icons/ic_share.html' %}
+{% endblock %}
+
+{% block container %}
+
+<div id="claim_box">
+
+
+<form action="#" method="post">{% csrf_token %}
+
+<div class="section_header">
+Your Information
+</div>
+
+<div class="form_section">
+
+<p>
+<select class="dropdown_menu">
+<option value="MR">Mr</option>
+<option value="MRS">Mrs</option>
+<option value="MS">Ms</option>
+</select>
+</p>
+
+<p><b>First Name</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Last Name</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+</div>
+
+
+
+
+</form>
+
+
+</div>
+
+<br>
+
+{% endblock %}
+
+{% block extra_floating_boxes %}
+<div id="claim_options_box">
+
+<a class="claim_option_link" href="/insurance/claim/save/?policy_id={{policy.id}}">
+<div class="claim_option">
+Save Progress
+</div>
+</a>
+
+
+</div>
+{% endblock %}
+
