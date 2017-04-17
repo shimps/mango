@@ -55,6 +55,12 @@ def make_claim(request):
     args.update(csrf(request))
     return render_to_response('make_claim.html',args)
 
+def save_claim(request):
+
+    args = {}
+
+    return HttpResponse('/insurance/claims/')
+
 def get_category_string(category_letter):
     for category in insurance_category_choices:
         if category[0] == category_letter:

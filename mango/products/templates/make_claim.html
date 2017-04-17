@@ -3,6 +3,7 @@
 
 {% block page_header %}
 <link type="text/css" rel="stylesheet" href="{% static 'make_claim.css'%}"/>
+<script type="text/javascript" src="{% static 'make_claim.js' %}"></script>
 {% endblock %}
 
 {% block mid_menu_item %}
@@ -68,7 +69,13 @@
 </div>
 
 <div class="form_section">
-<p>Some Payment Details...</p>
+<p><b>Payment Method</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Payment Details</b>
+<input class="form_field" type="text" name=""/>
+</p>
 </div>
 
 <div class="section_header">
@@ -197,5 +204,18 @@ Submit Claim
 
 <br>
 
+{% endblock %}
+
+{% block extra_floating_boxes %}
+<div id="claim_options_box">
+
+<a class="claim_option_link" href="/insurance/claim/save/?policy_id={{policy.id}}">
+<div class="claim_option">
+Save Progress
+</div>
+</a>
+
+
+</div>
 {% endblock %}
 
