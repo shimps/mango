@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block mid_menu_item %}
-<span id="status_bar_title">Make a Claim</span>
+<span id="status_bar_title">Application</span>
 {% endblock %}
 
 {% block right_menu_item %}
@@ -22,12 +22,12 @@
 <form action="#" method="post">{% csrf_token %}
 
 <div class="section_header">
-Your Information
+<b>Your Information</b>
 </div>
 
 <div class="form_section">
 
-<p>
+<p><b>Title</b><br>
 <select class="dropdown_menu">
 <option value="MR">Mr</option>
 <option value="MRS">Mrs</option>
@@ -43,10 +43,122 @@ Your Information
 <input class="form_field" type="text" name=""/>
 </p>
 
+<p><b>Income</b><br>
+<select class="dropdown_menu">
+<option value="L1K">less than ZMW 1000</option>
+<option value="B1K10K">between ZMW 1000 - 10000</option>
+<option value="G10K">ZMW 10000 and above</option>
+</select>
+</p>
+
+<p><b>Source of Funds</b><br>
+<select class="dropdown_menu">
+<option value="B">Business</option>
+<option value="S">Salary</option>
+<option value="O">Other</option>
+</select>
+</p>
+
+<p><b>If Other Specify</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+</div>
+
+<div class="section_header">
+<b>Vehicle Registration Address</b>
+</div>
+
+<div class="form_section">
+<p><b>Address</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Town/City</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Country</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+</div>
+
+<div class="section_header">
+Type of Cover
+</div>
+
+<div class="form_section">
+<p><b>Cover</b><br>
+<select class="dropdown_menu">
+<option value="PKG">Package</option>
+<option value="FO">Fire Only</option>
+<option value="TO">Theft Only</option>
+<option value="LO">Liability Only</option>
+</select>
+</p>
+</div>
+
+<div class="section_header">
+<b>Vehicle Information</b>
+</div>
+
+<div class="form_section">
+
+<p><b>Condition</b><br>
+<select class="dropdown_menu">
+<option value="OO">Original Owner</option>
+<option value="SH">Second Hand</option>
+<option value="TO">Theft Only</option>
+<option value="LO">Liability Only</option>
+</select>
+</p>
+
+<p><b>Make</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Model</b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+<p><b>Seating Capacity (including driver) </b>
+<input class="form_field" type="text" name=""/>
+</p>
+
+</div>
+
+<div class="section_header">
+<b>Vehicle Usage and Type</b>
+</div>
+
+<div class="form_section">
+
+<p><b>Normal Usage Area</b><br>
+<select class="dropdown_menu">
+<option value="U">Urban</option>
+<option value="R">Rural</option>
+</select>
+<p>
+
+<p><b>Vehicle Usage</b><br>
+<select class="dropdown_menu">
+<option value="U">Private/Social Purpose</option>
+<option value="R">Driving Tuitions</option>
+<option value="R">Towing</option>
+</select>
+<p>
+
 </div>
 
 
 
+
+<div class="form_section">
+<p>
+<input id="application_submit_button" type="submit" name="submit" value="Submit Application"/>
+</p>
+</div>
 
 </form>
 
@@ -62,6 +174,19 @@ Your Information
 
 <a class="claim_option_link" href="/insurance/claim/save/?policy_id={{policy.id}}">
 <div class="claim_option">
+Save Progress
+</div>
+</a>
+
+
+</div>
+{% endblock %}
+
+{% block extra_floating_boxes %}
+<div id="application_options_box">
+
+<a class="application_option_link" href="/insurance/apply/save/?policy_id={{policy.id}}">
+<div class="application_option">
 Save Progress
 </div>
 </a>

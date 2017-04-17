@@ -32,3 +32,54 @@
 .dropdown_menu{
 	padding:10px;
 }
+
+#application_submit_button{
+	background-color:#FB8C00;
+	color:#FFFFFF;
+	border:solid 1px #F57C00;
+	border-radius:3px;
+	padding:15px;
+	font-size:1.2em;
+	width:100%;
+	margin:0 auto;
+}
+
+#application_submit_button:active{
+	background-color:#EF6C00;
+}
+
+#application_submit_button{
+	text-decoration:none;
+}
+
+
+#application_options_box{
+	position:fixed;
+	font-family:'Arial';
+	left:50%;
+	top:50%;
+	width:300px;
+	margin-left:-150px;
+	background-color:#FFFFFF;
+	margin-top:-150px;
+	border:solid 1px #E3E0E0;
+	z-index:5;
+	display:none;
+}
+
+.application_option{
+	color:#000000;
+	padding:10px;
+	padding-top:20px;
+	padding-bottom:20px;
+	border-bottom:solid 1px #E3E0E0;
+}
+
+
+.application_option:active{
+	background-color:#D3D0D0;
+}
+
+.application_option_link{
+	text-decoration:none;
+}

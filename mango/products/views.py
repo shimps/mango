@@ -72,6 +72,12 @@ def save_claim(request):
 
     return HttpResponseRedirect('/insurance/claims/')
 
+def save_application(request):
+
+    args = {}
+
+    return HttpResponseRedirect('/insurance/my/')
+
 def get_category_string(category_letter):
     for category in insurance_category_choices:
         if category[0] == category_letter:
