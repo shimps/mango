@@ -48,18 +48,17 @@ Log In
 
 <div id="account_options_content">
 
-<form id="account_options_form" action="#">
+<form id="account_options_form" action="/accounts/registration/" method="get">
 <label><input type="radio" name="account_type" value="I" checked="checked">Individual</label><br>
 <label><input type="radio" name="account_type" value="C">Company</label><br>
 <label><input type="radio" name="account_type" value="IP">Insurance Provider</label><br>
 <label><input type="radio" name="account_type" value="M">Medical Institution</label><br>
 <label><input type="radio" name="account_type" value="P">Police Station</label><br>
 <label><input type="radio" name="account_type" value="S">Service Agent</label><br>
+<input id="account_options_button" type="submit" value="NEXT"/>
 </form>
 
-<button id="account_options_button">
-NEXT
-</button>
+
 
 </div>
 
