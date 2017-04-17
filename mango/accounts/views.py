@@ -77,6 +77,8 @@ def create_individual_account(request):
             return HttpResponse('A user with email %s already exists'%(email))
 
         user_object = User.objects.create_user(username = username, password = password)
+        AccountType.objects.create(user = user_object, individual = True)
+        
         ClientAccount.objects.create(title = title, first_name = first_name, last_name = last_name, email = email,
                                      gender = gender, dob = dob, user = user_object)
 
@@ -111,6 +113,8 @@ def create_company_account(request):
             return HttpResponse('A user with email %s already exists'%(email))
 
         user_object = User.objects.create_user(username = username, password = password)
+        AccountType.objects.create(user = user_object, company = True)
+        
         CompanyAccount.objects.create(title = name, description = description, email = email, user = user_object)
 
         authenticated_user = auth.authenticate(username = username, password = password)
@@ -143,6 +147,8 @@ def create_insurance_company(request):
             return HttpResponse('A user with email %s already exists'%(email))
 
         user_object = User.objects.create_user(username = username, password = password)
+        AccountType.objects.create(user = user_object, insurance_company = True)
+        
         InsuranceCompanyAccount.objects.create(title = name, description = description, email = email, user = user_object)
 
         authenticated_user = auth.authenticate(username = username, password = password)
@@ -176,6 +182,8 @@ def create_medical_account(request):
             return HttpResponse('A user with email %s already exists'%(email))
 
         user_object = User.objects.create_user(username = username, password = password)
+        AccountType.objects.create(user = user_object, medical_institution = True)
+        
         MedicalAgentAccount.objects.create(title = name, description = description, email = email, user = user_object)
 
         authenticated_user = auth.authenticate(username = username, password = password)
@@ -209,6 +217,8 @@ def create_police_account(request):
             return HttpResponse('A user with email %s already exists'%(email))
 
         user_object = User.objects.create_user(username = username, password = password)
+        AccountType.objects.create(user = user_object, police_station = True)
+        
         PoliceAgentAccount.objects.create(title = name, description = descriptio, email = email, user = user_object)
 
         authenticated_user = auth.authenticate(username = username, password = password)
@@ -242,6 +252,8 @@ def create_service_agent_account(request):
             return HttpResponse('A user with email %s already exists'%(email))
 
         user_object = User.objects.create_user(username = username, password = password)
+        AccountType.objects.create(user = user_object, service_agent = True)
+        
         ServiceAgentAccount.objects.create(title = name, description = description, email = email, user = user_object)
 
         authenticated_user = auth.authenticate(username = username, password = password)

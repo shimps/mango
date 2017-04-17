@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from custom_user import AccountType
 from time import time
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill,Transpose, SmartResize
