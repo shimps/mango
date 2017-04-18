@@ -1,7 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.context_processors import csrf
-from models import Policy
+from models import Policy, Claim, AutoClaim
 from accounts.models import InsuranceCompanyAccount
 from products.models import Policy, insurance_category_choices
 

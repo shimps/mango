@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from custom_user import AccountType
 from time import time
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill,Transpose, SmartResize
@@ -19,6 +18,7 @@ province_choices = (('COP','Copperbelt'),('LUS','Lusaka'),('CEN','Central'),('NW
                     ('WES','Western'))
 country_choices = (('ZM','Zambia'),)
 employment_status_choices = (('E','Employed'),('U','Unemployed'),('S','Self Employed / Contractor'))
+
 
 # clients are individual users
 class ClientAccount(models.Model):
@@ -219,6 +219,17 @@ class MangoAgent(models.Model):
     def __unicode__(self):
         return self.first_name+' '+self.last_name + ' - '+self.organization
 
+    
+class AccountType(models.Model):
+
+    individual = models.BooleanField(default = False)
+    company = models.BooleanField(default = False)
+    insurance_provider = models.BooleanField(default = False)
+    medical_institution = models.BooleanField(default = False)
+    police_station = models.BooleanField(default = False)
+    service_agent = models.BooleanField(default = False)
+
+    user = models.OneToOneField(User, related_name = 'account_type')
 
 
         

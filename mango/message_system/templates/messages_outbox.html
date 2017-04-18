@@ -32,7 +32,11 @@ Outbox
 <div class="message_feedlet">
 
 <div class="sender_box" class="message_section">
-{{message.receiver|truncatechars:40}}
+{% if message.receiver.user.account_type.insurance_company == True %}
+{{message.receiver.insurance_company.title|truncatechars:40}}
+{% elif message.reciever.account_type.individual == True %}
+{{message.sender.client_profile.first_name}} {{message.sender.client_profile.last_name}}
+{% endif %}
 </div>
 
 <div class="message_section">
