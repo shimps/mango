@@ -90,6 +90,8 @@ class Claim(models.Model):
 
     auto_insurance = models.BooleanField(default = False)
 
+    submitted = models.BooleanField(default = False)
+
     policy = models.ForeignKey(ClientPolicy, related_name = 'policy_claims')
     user = models.ForeignKey(User, related_name = 'claims')
 
