@@ -28,7 +28,7 @@
 <div class="form_section">
 
 <p><b>Title</b><br>
-<select class="dropdown_menu">
+<select name = "title" class="dropdown_menu">
 <option value="MR">Mr</option>
 <option value="MRS">Mrs</option>
 <option value="MS">Ms</option>
@@ -36,24 +36,24 @@
 </p>
 
 <p><b>First Name</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="first_name"/>
 </p>
 
 <p><b>Last Name</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="last_name"/>
 </p>
 
 <p><b>Phone</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="phone"/>
 </p>
 
 <p><b>Email</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="email"/>
 </p>
 
 
 <p><b>Income</b><br>
-<select class="dropdown_menu">
+<select class="dropdown_menu" name = "income">
 <option value="L1K">less than ZMW 1000</option>
 <option value="B1K10K">between ZMW 1000 - 10000</option>
 <option value="G10K">ZMW 10000 and above</option>
@@ -61,7 +61,7 @@
 </p>
 
 <p><b>Source of Funds</b><br>
-<select class="dropdown_menu">
+<select class="dropdown_menu" name = "funding_sources">
 <option value="B">Business</option>
 <option value="S">Salary</option>
 <option value="O">Other</option>
@@ -69,7 +69,7 @@
 </p>
 
 <p><b>If Other Specify</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="funding_specify"/>
 </p>
 
 </div>
@@ -80,15 +80,15 @@
 
 <div class="form_section">
 <p><b>Address</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="vehicle_registration_address"/>
 </p>
 
 <p><b>Town/City</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="vehicle_registration_city"/>
 </p>
 
 <p><b>Country</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="vehicle_registration_country"/>
 </p>
 
 </div>
@@ -99,7 +99,7 @@ Type of Cover
 
 <div class="form_section">
 <p><b>Cover</b><br>
-<select class="dropdown_menu">
+<select class="dropdown_menu" name="type_of_cover">
 <option value="PKG">Package</option>
 <option value="FO">Fire Only</option>
 <option value="TO">Theft Only</option>
@@ -118,22 +118,22 @@ Type of Cover
 <div class="form_section">
 
 <p><b>Condition</b><br>
-<select class="dropdown_menu">
+<select class="dropdown_menu" name="vehicle_condition">
 <option value="OO">Original Owner</option>
 <option value="SH">Second Hand</option>
 </select>
 </p>
 
 <p><b>Make</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="vehicle_make"/>
 </p>
 
 <p><b>Model</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="vehicle_model"/>
 </p>
 
 <p><b>Seating Capacity (including driver) </b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="vehicle_seating_capacity"/>
 </p>
 
 </div>
@@ -145,14 +145,14 @@ Type of Cover
 <div class="form_section">
 
 <p><b>Normal Usage Area</b><br>
-<select class="dropdown_menu">
+<select class="dropdown_menu" name="vehicle_usage_area">
 <option value="U">Urban</option>
 <option value="R">Rural</option>
 </select>
 </p>
 
 <p><b>Vehicle Usage</b><br>
-<select class="dropdown_menu">
+<select class="dropdown_menu" name="vehicle_usage_type">
 <option value="P">Private/Social Purpose</option>
 <option value="D">Driving Tuitions</option>
 <option value="T">Towing</option>

@@ -108,7 +108,9 @@ class Application(models.Model):
     email_address = models.CharField(max_length = 100, null = True, blank = True)
 
     income = models.CharField(max_length = 10, choices = income_choices,null = True, blank = True)
-    income_specify = models.CharField(max_length = 200, null = True, blank = True)
+    
+    funding_sources = models.CharField(max_length = 3, choices = funding_choices, null = True, blank = True)
+    funding_specify = models.CharField(max_length = 200, null = True, blank = True)
 
     auto_insurance = models.BooleanField(default = False)
     
