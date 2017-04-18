@@ -147,7 +147,7 @@ def create_insurance_company(request):
             return HttpResponse('A user with email %s already exists'%(email))
 
         user_object = User.objects.create_user(username = username, password = password)
-        AccountType.objects.create(user = user_object, insurance_company = True)
+        AccountType.objects.create(user = user_object, insurance_provider = True)
         
         InsuranceCompanyAccount.objects.create(title = name, description = description, email = email, user = user_object)
 
