@@ -254,15 +254,15 @@ def continue_claim(request):
         insurance_policy_number = request.POST['o_insurance_policy_number']
         
         insurance_start_date = request.POST['o_insurance_start_date']
-        if not insurance_start_date:
+        if not insurance_start_date or insurance_start_date == 'None':
             insurance_start_date = None
             
         insurance_end_date = request.POST['o_insurance_end_date']
-        if not insurance_end_date:
+        if not insurance_end_date or insurance_end_date == 'None':
             insurance_end_date = None
 
         if action == 'submit':
-            '''
+            
             claim.title = title
             claim.first_name = first_name
             claim.last_name = last_name
@@ -275,21 +275,22 @@ def continue_claim(request):
             claim.auto_insurance = True
             claim.submitted = True
             claim.save()
+            
             '''
-
             Claim.objects.update_or_create(id = claim.id, title = title, first_name = first_name, last_name = last_name, address = address, city = city,
                      country = country, telephone = phone, email_address = email, payment_method = payment_method,
                      auto_insurance = True, submitted = True)
+            '''
             
         elif action == 'save':
-            '''
+            
             claim.title = title
             claim.first_name = first_name
             claim.last_name = last_name
             claim.address = address
             claim.city = city
             claim.country = country
-            claim.telephone = phone,
+            claim.telephone = phone
             claim.email_address = email
             claim.payment_method = payment_method
             claim.auto_insurance = True
@@ -299,15 +300,31 @@ def continue_claim(request):
             Claim.objects.update_or_create(id = claim.id,title = title, first_name = first_name, last_name = last_name, address = address, city = city,
                      country = country, telephone = phone, email_address = email, payment_method = payment_method,
                      auto_insurance = True, submitted = False)
+            '''
 
         auto_claim = claim.auto_claim
-        AutoClaim.objects.update_or_create(id=auto_claim.id, registration_number = vehicle_registration_number, make = vehicle_make, model = vehicle_model,
-                         registration_date = vehicle_registration_date, date_of_accident = date_of_accident,
-                         time_of_accident = time_of_accident, police_station = police_station, garage_name = garage, loss_estimate = loss_estimate,
-                         number_in_vehicle = number_in_vehicle, name_of_driver = driver_name, dob_of_driver = dob_of_driver,
-                         license_number = license_no_of_driver, license_expiry_date = license_expiry_of_driver, vehicle_authorization = vehicle_authorization,
-                         o_insurance_company = insurance_company, o_insurance_policy_number = insurance_policy_number, o_insurance_start_date = insurance_start_date,
-                         o_insurance_end_date = insurance_end_date)
+        auto_claim.registration_number = vehicle_registration_number
+        auto_claim.make = vehicle_make
+        auto_claim.model = vehicle_model
+        auto_claim.registration_date = vehicle_registration_date
+        auto_claim.date_of_accident = date_of_accident
+        auto_claim.time_of_accident = time_of_accident
+        auto_claim.place_of_accident = place_of_accident
+        auto_claim.police_station = police_station
+        auto_claim.garage_name = garage
+        auto_claim.loss_estimate = loss_estimate
+        auto_claim.number_in_vehicle = number_in_vehicle
+        auto_claim.name_of_driver = driver_name
+        auto_claim.dob_of_driver = dob_of_driver
+        auto_claim.license_number = license_no_of_driver
+        auto_claim.license_expiry_date = license_expiry_of_driver
+        auto_claim.vehicle_authorization = vehicle_authorization
+        auto_claim.o_insurance_company = insurance_company
+        auto_claim.o_insurance_policy_number = insurance_policy_number
+        auto_claim.o_insurance_start_date = insurance_start_date
+        auto_claim.o_insurance_end_date = insurance_end_date
+
+        auto_claim.save()
         
         
 
@@ -335,8 +352,14 @@ def get_category_string(category_letter):
 
 def my_insurance(request):
 
-    current_policies = ClientPolicy.objects.filter(user = request.user)
     args = {}
+    
+    logged_user = request.user
+    if logged_user.account_type.individual == True:
+        client = logged_user.client_profile
+        current_policies = ClientPolicy.objects.filter(client = client)
+        args['current_policies'] = current_policies
+    
     args['current_policies'] = current_policies
     return render_to_response('my_insurance.html',args)
 

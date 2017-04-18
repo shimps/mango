@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block page_header %}
-<link type="text/css" rel="stylesheet" href="{% static 'make_claim.css'%}"/>
-<script type="text/javascript" src="{% static 'make_claim.js' %}"></script>
+<link type="text/css" rel="stylesheet" href="{% static 'continue_claim.css'%}"/>
+<script type="text/javascript" src="{% static 'continue_claim.js' %}"></script>
 {% endblock %}
 
 {% block mid_menu_item %}
@@ -18,7 +18,7 @@
 
 <div id="claim_box">
 
-<form id="claim_form" action="/insurance/claim/?policy_id={{policy.id}}&action=submit" method="post">{% csrf_token %}
+<form id="claim_form" action="/insurance/claim/continue/?claim_id={{claim.id}}&action=submit" method="post">{% csrf_token %}
 
 <div class="section_header">
 <b>Policy Holder Information</b>
@@ -27,7 +27,7 @@
 <div class="form_section">
 
 <p>
-<select name = "title" class="dropdown_menu" value={{claim.title}}>
+<select name = "title" class="dropdown_menu" value="{{claim.title}}">
 <option value="MR">Mr</option>
 <option value="MRS">Mrs</option>
 <option value="MS">Ms</option>
@@ -96,7 +96,7 @@
 </p>
 
 <p><b>Registration Date</b>
-<input class="form_field" type="text" name="vehicle_registration_date" value="{{claim.auto_claim.registration_date}}"/>
+<input class="form_field" type="text" name="vehicle_registration_date" value="{% if claim.auto_claim.registration_date %}{{claim.auto_claim.registration_date}} {% endif %}"/>
 </p>
 
 </div>
@@ -109,11 +109,11 @@
 <div class="form_section">
 
 <p><b>Date</b>
-<input class="form_field" type="text" name="accident_date" value="{{claim.auto_claim.date_of_accident}}"/>
+<input class="form_field" type="text" name="accident_date" value="{% if claim.auto_claim.date_of_accident %}{{claim.auto_claim.date_of_accident}} {% endif %}"/>
 </p>
 
 <p><b>Time</b>
-<input class="form_field" type="text" name="accident_time" value="{{claim.auto_claim.time_of_accident}}"/>
+<input class="form_field" type="text" name="accident_time" value="{% if claim.auto_claim.time_of_accident %}{{claim.auto_claim.time_of_accident}} {% endif %}"/>
 </p>
 
 <p><b>Place</b>
@@ -148,7 +148,7 @@
 </p>
 
 <p><b>Date of Birth</b>
-<input class="form_field" type="text" name="dob_of_driver" value="{{claim.auto_claim.dob_of_driver}}"/>
+<input class="form_field" type="text" name="dob_of_driver" value="{% if claim.auto_claim.dob_of_driver %} {{claim.auto_claim.dob_of_driver}} {% endif %}"/>
 </p>
 
 <p><b>License No.</b>
@@ -156,7 +156,7 @@
 </p>
 
 <p><b>License Expiry</b>
-<input class="form_field" type="text" name="license_expiry_date" value="{{claim.auto_claim.license_expiry_date}}"/>
+<input class="form_field" type="text" name="license_expiry_date" value="{% if claim.auto_claim.license_expiry_date %} {{claim.auto_claim.license_expiry_date}} {% endif %}"/>
 </p>
 
 <p><b>Vehicle Authorization</b>
@@ -179,11 +179,11 @@
 </p>
 
 <p><b>Insurance Start Date</b>
-<input class="form_field" type="text" name="o_insurance_start_date" value="{{claim.auto_claim.o_insurance_start_date}}"/>
+<input class="form_field" type="text" name="o_insurance_start_date" value="{% if claim.auto_claim.o_insurance_start_date %} {{claim.auto_claim.o_insurance_start_date}} {% endif %}"/>
 </p>
 
 <p><b>Insurance End Date</b>
-<input class="form_field" type="text" name="o_insurance_end_date" value="{{claim.auto_claim.o_insurance_end_date}}"/>
+<input class="form_field" type="text" name="o_insurance_end_date" value="{% if claim.auto_claim.o_insurance_end_date %} {{claim.auto_claim.o_insurance_end_date}} {% endif %}"/>
 </p>
 
 </div>
@@ -209,7 +209,7 @@ Submit Claim
 {% block extra_floating_boxes %}
 <div id="claim_options_box">
 
-<a id="save_progress_button" class="claim_option_link" href="/insurance/make_claim/?policy_id={{policy.id}}&action=save">
+<a id="save_progress_button" class="claim_option_link" href="/insurance/claim/continue/?claim_id={{claim.id}}&action=save">
 <div class="claim_option">
 Save Progress
 </div>

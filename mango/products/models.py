@@ -134,9 +134,9 @@ class AutoClaim(models.Model):
     registration_number = models.CharField(max_length = 100, null = True, blank = True)
     make = models.CharField(max_length = 100, null = True, blank = True)
     model = models.CharField(max_length = 100, null = True, blank = True)
-    registration_date = models.DateField(default = datetime.now, blank = True)
+    registration_date = models.DateField(default = datetime.now, null = True,blank = True)
     
-    date_of_accident = models.DateField(default = datetime.now, blank = True)
+    date_of_accident = models.DateField(default = datetime.now, null = True,blank = True)
     time_of_accident = models.CharField(max_length = 100, null = True, blank = True)
     place_of_accident = models.CharField(max_length = 100, null = True, blank = True)
     
@@ -146,15 +146,15 @@ class AutoClaim(models.Model):
     
     number_in_vehicle = models.CharField(max_length = 100, null = True, blank = True)
     name_of_driver = models.CharField(max_length = 100, null = True, blank = True) 
-    dob_of_driver = models.DateField(default = datetime.now, blank = True)
+    dob_of_driver = models.DateField(default = datetime.now, null = True,blank = True)
     license_number = models.CharField(max_length = 100, null = True, blank = True)
-    license_expiry_date = models.DateField(null = True, blank = True)
+    license_expiry_date = models.DateField(default = datetime.now, null = True, blank = True)
     vehicle_authorization = models.CharField(max_length = 200, null = True, blank = True)
 
     o_insurance_company = models.CharField(max_length = 200, null = True, blank = True)
     o_insurance_policy_number = models.CharField(max_length = 200, null = True, blank = True)
-    o_insurance_start_date = models.DateField(default = datetime.now, blank = True)
-    o_insurance_end_date = models.DateField(default = datetime.now, blank = True)
+    o_insurance_start_date = models.DateField(default = datetime.now, null = True,blank = True)
+    o_insurance_end_date = models.DateField(default = datetime.now, null = True,blank = True)
 
     claim = models.OneToOneField(Claim, related_name = 'auto_claim')
     

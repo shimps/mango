@@ -15,29 +15,29 @@ Current Plans
 </div>
 
 <div class="policy_feed">
-{% for policy in current_policies %}
-<a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
+{% for client_policy in current_policies %}
+<a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{client_policy.policy.id}}">
 <div class="policy_feedlet">
 
 
 <div class="policy_feedlet_details">
 
 <div class="policy_feedlet_title">
-{{policy.title}}
+{{client_policy.policy.title}}
 </div>
 
 <div class="policy_feedlet_company">
-{{policy.insurance_company.title}}
+{{client_policy.policy.insurance_company.title}}
 </div>
 
 <div class="policy_feedlet_category">
-{{policy.get_category_display}}
+{{client_policy.policy.get_category_display}}
 </div>
 
 <div class="policy_feedlet_premium">
-<b>Monthly Costs:</b> ZMW {{policy.monthly_cost|floatformat:2}}<br>
-<b>Coinsurance:</b> {{policy.coinsurance}}%<br>
-<b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}
+<b>Monthly Costs:</b> ZMW {{client_policy.policy.monthly_cost|floatformat:2}}<br>
+<b>Coinsurance:</b> {{client_policy.policy.coinsurance}}%<br>
+<b>Deductible:</b> ZMW {{client_policy.policy.deductible|floatformat:2}}
 </div>
 
 </div>
