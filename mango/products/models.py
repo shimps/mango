@@ -107,8 +107,8 @@ class Application(models.Model):
     telephone = models.CharField(max_length = 50, null = True, blank = True)
     email_address = models.CharField(max_length = 100, null = True, blank = True)
 
-    income = models.CharField(max_length = 10, choices = income_choices)
-    income_specify = models.CharField(max_length = 200)
+    income = models.CharField(max_length = 10, choices = income_choices,null = True, blank = True)
+    income_specify = models.CharField(max_length = 200, null = True, blank = True)
 
     auto_insurance = models.BooleanField(default = False)
     
