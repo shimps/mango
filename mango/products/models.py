@@ -70,3 +70,65 @@ class CompanyPolicy(models.Model):
     cancelled = models.BooleanField(default = False) # has user cancelled?
     purchase_date = models.DateTimeField(auto_now_add = True)
     cancel_date = models.DateTimeField(null = True, blank = True)
+
+
+title_choices = (('MR','Mr'),('MRS','Mrs'), ('MS','Ms'))
+class Claim(models.Model):
+
+    title = models.CharField(max_length = 3, choices = title_choices, null=True, blank = True)
+    first_name = models.CharField(max_length = 50, blank = True, null = True)
+    last_name = models.CharField(max_length = 50, null = True, blank = True)
+    address = models.CharField(max_length = 200, null = True, blank = True)
+    city = models.CharField(max_length = 50, null = True, blank = True)
+    country = models.CharField(max_length = 50, null = True, blank = True)
+    pobox = models.CharField(max_length = 50, null = True, blank = True)
+    email_address = models.CharField(max_length = 100, null = True, blank = True)
+    payment_method = models.CharField(max_length = 100, null = True, blank = True)
+    payment_details = models.CharField(max_length = 100, null = True, blank = True)
+
+    auto_insurance = models.BooleanField(default = False)
+
+    policy = models.ForeignKey(ClientPolicy, related_name = 'policy_claims')
+    user = models.ForeignKey(User, related_name = 'claims')
+
+class Application(models.Model):
+
+    policy = models.ForeignKey(Policy, related_name = 'policy_applications')
+    user = models.ForeignKey(User, related_name = 'policy_applications')
+
+
+class AutoClaim(models.Model):
+
+    registration_number = models.CharField(max_length = 100, null = True, blank = True)
+    make = models.CharField(max_length = 100, null = True, blank = True)
+    model = models.CharField(max_length = 100, null = True, blank = True)
+    registration_date = models.DateField(null = True, blank = True)
+    
+    date_of_accident = models.DateField(null = True, blank = True)
+    time_of_accident = models.CharField(max_length = 100, null = True, blank = True)
+    place_of_accident = models.CharField(max_length = 100, null = True, blank = True)
+    
+    police_station = models.CharField(max_length = 100, null = True, blank = True)
+    garage_name = models.CharField(max_length = 100, null = True, blank = True)
+    loss_estimate = models.CharField(max_length = 100, null = True, blank = True)
+    
+    number_in_vehicle = models.CharField(max_length = 100, null = True, blank = True)
+    name_of_driver = models.CharField(max_length = 100, null = True, blank = True) 
+    dob_of_driver = models.DateField(null = True, blank = True)
+    license_number = models.CharField(max_length = 100, null = True, blank = True)
+    license_expiry_date = models.DateField(null = True, blank = True)
+    vehicle_authorization = models.CharField(max_length = 200, null = True, blank = True)
+
+    o_insurance_company = models.CharField(max_length = 200, null = True, blank = True)
+    o_insurance_policy_number = models.CharField(max_length = 200, null = True, blank = True)
+    o_insurance_start_date = models.DateField(null = True, blank = True)
+    o_insurance_end_date = models.DateField(null = True, blank = True)
+
+    claim = models.OneToOneField(Claim, related_name = 'auto_claim')
+
+    
+    
+    
+    
+    
+    
