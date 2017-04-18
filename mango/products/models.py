@@ -114,6 +114,8 @@ class Application(models.Model):
     funding_sources = models.CharField(max_length = 3, choices = funding_choices, null = True, blank = True)
     funding_specify = models.CharField(max_length = 200, null = True, blank = True)
 
+    submitted = models.BooleanField(default = False)
+
     auto_insurance = models.BooleanField(default = False)
     
     policy = models.ForeignKey(Policy, related_name = 'policy_applications')

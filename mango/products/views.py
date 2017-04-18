@@ -1,9 +1,8 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.context_processors import csrf
-from models import Policy, Claim, AutoClaim
 from accounts.models import InsuranceCompanyAccount
-from products.models import Policy, insurance_category_choices
+from products.models import Policy, insurance_category_choices, Claim, AutoClaim, Application, AutoApplication
 
 # Create your views here.
 def insurance_types(request):
@@ -49,6 +48,37 @@ def apply_for_policy(request):
 
     policy_id = request.GET.get('policy_id')
     policy = Policy.objects.get(id=policy_id)
+
+    if request.POST:
+
+        title = request.POST['title']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        income = request.POST['income']
+        funding_source = request.POST['funding_sources']
+        funding_specify = request.POST['funding_specify']
+        address = request.POST['address']
+        city = request.POST['city']
+        country = request.POST['country']
+        type_of_cover = request.POST['type_of_cover']
+        vehicle_condition = request.POST['vehicle_condition']
+        vehicle_make = request.POST['vehicle_make']
+        vehicle_model = request.POST['vehicle_model']
+        vehicle_seating_capacity = request.POST['vehicle_seating_capacity']
+        vehicle_usage_area = request.POST['vehicle_usage_area']
+        vehicle_usage_type = request.POST['vehicle_usage_type']
+        
+        application = Application.objects.create(title = title, first_name = first_name, last_name = last_name,
+                                                 address = address, city = city, country = country, telephone = phone,
+                                                 email_address = email, income = income, funding_sources = funding_sources,
+                                                 funding_specify = funding_specify, auto_insurance = True, policy = policy, user = request.user)
+        AutoApplication.objects.create(type_of_cover = type_of_cover, vehicle_condition = vehicle_condition, make = vehicle_make,
+                                       model = vehicle_model, seating_capacity = vehicle_seating_capacity, vehicle_usage_area = vehicle_usage_area,
+                                       vehicle_usage_type = vehicle_usage_type, application = application)
+        
+        return HttpResponseRedirect('/insurance/policy/?policy_id=%s'%policy_id)
 
     args = {}
     args.update(csrf(request))

@@ -19,7 +19,7 @@
 <div id="claim_box">
 
 
-<form action="#" method="post">{% csrf_token %}
+<form action="/insurance/apply/?policy_id={{policy.id}}" method="post">{% csrf_token %}
 
 <div class="section_header">
 <b>Your Information</b>
