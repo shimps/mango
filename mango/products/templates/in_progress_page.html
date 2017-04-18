@@ -30,8 +30,15 @@ Insurance Claim Forms
 </div>
 
 <div id="insurance_claim_feed">
-{% for form in claim_forms %}
+{% for claim in saved_claims %}
+<a href="/insurance/claim/continue/?claim_id={{claim.id}}">
+<div class="claim_feedlet">
+<div>
+{{claim.policy.policy.title}}
+</div>
 
+</div>
+</a>
 {% empty %}
 <div class="claim_feedlet">
 There are no saved forms.

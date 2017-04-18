@@ -18,7 +18,7 @@
 
 <div id="claim_box">
 
-<form action="#" method="post">{% csrf_token %}
+<form id="claim_form" action="/insurance/claim/?policy_id={{policy.id}}&action=submit" method="post">{% csrf_token %}
 
 <div class="section_header">
 <b>Policy Holder Information</b>
@@ -51,7 +51,7 @@
 </p>
 
 <p><b>Country</b>
-<input class="form_field" type="text" name=""/>
+<input class="form_field" type="text" name="country"/>
 </p>
 
 <p><b>Phone Number</b>
@@ -209,7 +209,7 @@ Submit Claim
 {% block extra_floating_boxes %}
 <div id="claim_options_box">
 
-<a class="claim_option_link" href="/insurance/claim/save/?policy_id={{policy.id}}">
+<a id="save_progress_button" class="claim_option_link" href="/insurance/make_claim/?policy_id={{policy.id}}&action=save">
 <div class="claim_option">
 Save Progress
 </div>

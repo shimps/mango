@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'make_claim.css'%}"/>
+<script type="text/javascript" src="{% static 'make_claim.js' %}"></script>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Make a Claim</span>
+{% endblock %}
+
+{% block right_menu_item %}
+{% include 'icons/ic_share.html' %}
+{% endblock %}
+
+{% block container %}
+
+<div id="claim_box">
+
+<form id="claim_form" action="/insurance/claim/?policy_id={{policy.id}}&action=submit" method="post">{% csrf_token %}
+
+<div class="section_header">
+<b>Policy Holder Information</b>
+</div>
+
+<div class="form_section">
+
+<p>
+<select name = "title" class="dropdown_menu" value={{claim.title}}>
+<option value="MR">Mr</option>
+<option value="MRS">Mrs</option>
+<option value="MS">Ms</option>
+</select>
+</p>
+
+<p><b>First Name</b>
+<input class="form_field" type="text" name="first_name" value = "{{claim.first_name}}"/>
+</p>
+
+<p><b>Last Name</b>
+<input class="form_field" type="text" name="last_name" value = "{{claim.last_name}}"/>
+</p>
+
+<p><b>Address</b>
+<input class="form_field" type="text" name="address" value="{{claim.address}}"/>
+</p>
+
+<p><b>City / Town</b>
+<input class="form_field" type="text" name="city" value="{{claim.city}}"/>
+</p>
+
+<p><b>Country</b>
+<input class="form_field" type="text" name="country" value="{{claim.country}}"/>
+</p>
+
+<p><b>Phone Number</b>
+<input class="form_field" type="text" name="phone" value="{{claim.telephone}}"/>
+</p>
+
+<p><b>Email Address</b>
+<input class="form_field" type="text" name="email" value="{{claim.email_address}}"/>
+</p>
+
+</div>
+
+<div class="section_header">
+<b>Payment Details</b>
+</div>
+
+<div class="form_section">
+<p><b>Payment Method</b>
+<input class="form_field" type="text" name="payment_method" value="{{claim.payment_method}}"/>
+</p>
+
+<p><b>Payment Details</b>
+<input class="form_field" type="text" name="payment_details" value="{{claim.payment_details}}"/>
+</p>
+</div>
+
+<div class="section_header">
+<b>Vehicle Information</b>
+</div>
+<div class="form_section">
+
+<p><b>Registration Number</b>
+<input class="form_field" type="text" name="vehicle_registration_number" value="{{claim.auto_claim.registration_number}}"/>
+</p>
+
+<p><b>Make</b>
+<input class="form_field" type="text" name="vehicle_make" value="{{claim.auto_claim.make}}"/>
+</p>
+
+<p><b>Model</b>
+<input class="form_field" type="text" name="vehicle_model" value="{{claim.auto_claim.model}}"/>
+</p>
+
+<p><b>Registration Date</b>
+<input class="form_field" type="text" name="vehicle_registration_date" value="{{claim.auto_claim.registration_date}}"/>
+</p>
+
+</div>
+
+
+<div class="section_header">
+<b>Details of Accident</b>
+</div>
+
+<div class="form_section">
+
+<p><b>Date</b>
+<input class="form_field" type="text" name="accident_date" value="{{claim.auto_claim.date_of_accident}}"/>
+</p>
+
+<p><b>Time</b>
+<input class="form_field" type="text" name="accident_time" value="{{claim.auto_claim.time_of_accident}}"/>
+</p>
+
+<p><b>Place</b>
+<input class="form_field" type="text" name="accident_place" value="{{claim.auto_claim.place_of_accident}}"/>
+</p>
+
+<p><b>Police Station</b>
+<input class="form_field" type="text" name="police_station" value="{{claim.auto_claim.police_station}}"/>
+</p>
+
+<p><b>Name of Garage</b>
+<input class="form_field" type="text" name="garage" value="{{claim.auto_claim.garage_name}}"/>
+</p>
+
+<p><b>Loss Estimate Cost</b>
+<input class="form_field" type="text" name="loss_estimate" value="{{claim.auto_claim.loss_estimate}}"/>
+</p>
+
+<p><b>No. of people in vehicle at accident</b>
+<input class="form_field" type="text" name="number_in_vehicle" value="{{claim.auto_claim.number_in_vehicle}}"/>
+</p>
+
+</div>
+
+<div class="section_header">
+<b>Driver Details</b>
+</div>
+
+<div class="form_section">
+<p><b>Name of Driver</b>
+<input class="form_field" type="text" name="driver_name" value="{{claim.auto_claim.name_of_driver}}"/>
+</p>
+
+<p><b>Date of Birth</b>
+<input class="form_field" type="text" name="dob_of_driver" value="{{claim.auto_claim.dob_of_driver}}"/>
+</p>
+
+<p><b>License No.</b>
+<input class="form_field" type="text" name="license_number" value="{{claim.auto_claim.license_number}}"/>
+</p>
+
+<p><b>License Expiry</b>
+<input class="form_field" type="text" name="license_expiry_date" value="{{claim.auto_claim.license_expiry_date}}"/>
+</p>
+
+<p><b>Vehicle Authorization</b>
+<input class="form_field" type="text" name="vehicle_authorization" value="{{claim.auto_claim.vehicle_authorization}}"/>
+</p>
+
+</div>
+
+<div class="section_header">
+<b>Details of Any Other Insurance Covering Vehicle</b>
+</div>
+
+<div class="form_section">
+<p><b>Name of Insurance Company</b>
+<input class="form_field" type="text" name="o_insurance_company" value="{{claim.auto_claim.o_insurance_company}}"/>
+</p>
+
+<p><b>Insurance Policy No.</b>
+<input class="form_field" type="text" name="o_insurance_policy_number" value="{{claim.auto_claim.o_insurance_policy_number}}"/>
+</p>
+
+<p><b>Insurance Start Date</b>
+<input class="form_field" type="text" name="o_insurance_start_date" value="{{claim.auto_claim.o_insurance_start_date}}"/>
+</p>
+
+<p><b>Insurance End Date</b>
+<input class="form_field" type="text" name="o_insurance_end_date" value="{{claim.auto_claim.o_insurance_end_date}}"/>
+</p>
+
+</div>
+
+<div class="form_section">
+<!--
+<div id="submit_claim_button">
+Submit Claim
+</div>
+-->
+
+<input id="submit_claim_button" type="submit" name="submit" value="Submit Claim"/>
+</div>
+
+</form>
+
+</div>
+
+<br>
+
+{% endblock %}
+
+{% block extra_floating_boxes %}
+<div id="claim_options_box">
+
+<a id="save_progress_button" class="claim_option_link" href="/insurance/make_claim/?policy_id={{policy.id}}&action=save">
+<div class="claim_option">
+Save Progress
+</div>
+</a>
+
+
+</div>
+{% endblock %}
+
