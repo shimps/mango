@@ -2,14 +2,28 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-from products.models import Claim
+from accounts.models import ClientAccount, CompanyAccount
+from products.models import Claim, ClientPolicy, CompanyPolicy
 
 
 @login_required
 def home(request):
 
     logged_user = request.user
+    
     args = {}
+    
+    my_policies = []
+    
+    if logged_user.account_type.individual == True:
+        client_account = ClientAccount.objects.get(user = request.user)
+        my_policies = ClientPolicy.objects.filter(client = client_account,cancelled = False)
+
+    elif logged_user.account_type.company == True:
+        company_account = CompanyAccount.objects.get(user = request.user)
+        my_policies = CompanyPolicy.objects.filter(company = company_account)
+        
+    args['current_policies'] = my_policies
     args['logged_user'] = logged_user
     return render_to_response('home.html',args)
 

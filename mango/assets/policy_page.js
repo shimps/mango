@@ -7,13 +7,13 @@ $(document).ready(function(){
 	var fader_box = $('#fader_box');
 	
 	policy_apply_button.on('click',function(){
-		$(this).hide();
-		policy_cancel_button.show();
+		//$(this).hide();
+		//policy_cancel_button.show();
 	})
 	
 	policy_cancel_button.on('click',function(){
-		$(this).hide();
-		policy_apply_button.show();
+		//$(this).hide();
+		//policy_apply_button.show();
 	})
 	
 	share_button.on('click',function(){

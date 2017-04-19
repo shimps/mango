@@ -37,10 +37,21 @@ def create_policy(request):
 
 def view_policy(request):
 
+    logged_user = request.user
     policy_id = request.GET.get('policy_id')
     policy = Policy.objects.get(id = policy_id)
     
     args = {}
+
+    if logged_user.account_type.individual == True:
+        client_account = ClientAccount.objects.get(user = logged_user)
+        #check if user has this policy
+        policy_count = ClientPolicy.objects.filter(client = client_account, policy = policy, cancelled = False).count()
+        if policy_count == 0:
+            args['subscribed'] = False
+        else:
+            args['subscribed'] = True
+    
     args['policy'] = policy
     return render_to_response('policy_page.html',args)
 
@@ -230,34 +241,38 @@ def continue_claim(request):
             time_of_accident = None
             
         place_of_accident = request.POST['accident_place']
+        
         #Police Station Details
         police_station = request.POST['police_station']
         garage = request.POST['garage']
         loss_estimate = request.POST['loss_estimate']
         number_in_vehicle = request.POST['number_in_vehicle']
+        
         #Driver Details
         driver_name = request.POST['driver_name']
-        
         dob_of_driver = request.POST['dob_of_driver']
+        
         if not dob_of_driver:
             dob_of_driver = None
         
         license_no_of_driver = request.POST['license_number']
-        
         license_expiry_of_driver = request.POST['license_expiry_date']
+        
         if not license_expiry_of_driver:
             license_expiry_of_driver = None
         
         vehicle_authorization = request.POST['vehicle_authorization']
+        
         #Other Insurance Companies
         insurance_company = request.POST['o_insurance_company']
         insurance_policy_number = request.POST['o_insurance_policy_number']
-        
         insurance_start_date = request.POST['o_insurance_start_date']
+        
         if not insurance_start_date or insurance_start_date == 'None':
             insurance_start_date = None
             
         insurance_end_date = request.POST['o_insurance_end_date']
+        
         if not insurance_end_date or insurance_end_date == 'None':
             insurance_end_date = None
 

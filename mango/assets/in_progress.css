@@ -22,16 +22,45 @@
 .application_feedlet{
 	background-color: #FFFFFF;
 	border-bottom:solid 1px #E3E0E0;
-	height:145px;
+	min-height:75px;
 	position:relative;
 	padding:10px;
 	box-sizing:border-box;
 }
 
+.application_feedlet:active{
+	background-color:#D3D0D0;
+}
+
+.application_feedlet_title{
+	color:#333333;
+	font-size:1.1em;
+}
+
+.application_feedlet_link{
+	text-decoration:none;
+}
+
+.application_feedlet_category{
+	color:#FF8F00;
+	font-size:0.9em;
+}
+
+.application_feedlet_message{
+	color:#888888;
+	margin-top: 10px;
+}
+
+.application_feedlet_company{
+	color:#4CAF50;
+	font-size:0.9em;
+}
+
+
 .claim_feedlet{
 	background-color: #FFFFFF;
 	border-bottom:solid 1px #E3E0E0;
-	height:145px;
+	min-height:75px;
 	position:relative;
 	padding:10px;
 	box-sizing:border-box;
@@ -39,6 +68,30 @@
 
 .claim_feedlet:active{
 	background-color:#D3D0D0;
+}
+
+.claim_feedlet_title{
+	color:#333333;
+	font-size:1.1em;
+}
+
+.claim_feedlet_link{
+	text-decoration:none;
+}
+
+.claim_feedlet_category{
+	color:#FF8F00;
+	font-size:0.9em;
+}
+
+.claim_feedlet_message{
+	color:#888888;
+	margin-top: 10px;
+}
+
+.claim_feedlet_company{
+	color:#4CAF50;
+	font-size:0.9em;
 }
 
 .application_feedlet:active{

@@ -28,9 +28,9 @@
 
 <p>
 <select name = "title" class="dropdown_menu" value="{{claim.title}}">
-<option value="MR">Mr</option>
-<option value="MRS">Mrs</option>
-<option value="MS">Ms</option>
+<option value="MR" {% if claim.title == 'MR' %} selected=selected{% endif %}>Mr</option>
+<option value="MRS" {% if claim.title == 'MRS' %} selected=selected{% endif %}>Mrs</option>
+<option value="MS" {% if claim.title == 'MS' %} selected=selected{% endif %}>Ms</option>
 </select>
 </p>
 

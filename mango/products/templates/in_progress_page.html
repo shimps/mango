@@ -15,7 +15,29 @@ Insurance Application Forms
 </div>
 
 <div id="insurance_application_feed">
+
 {% for form in application_forms %}
+
+<a class="application_feedlet_link" href="/insurance/claim/continue/?claim_id={{claim.id}}">
+<div class="application_feedlet">
+<div class="application_feedlet_title">
+{{form.policy.policy.title}}
+</div>
+
+<div class="application_feedlet_company">
+{{form.policy.policy.insurance_company.title}}
+</div>
+
+<div class="application_feedlet_category">
+{{form.policy.policy.get_category_display}}
+</div>
+
+<div class="application_feedlet_message">
+Saved
+</div>
+
+</div>
+</a>
 
 {% empty %}
 <div class="application_feedlet">
@@ -31,10 +53,22 @@ Insurance Claim Forms
 
 <div id="insurance_claim_feed">
 {% for claim in saved_claims %}
-<a href="/insurance/claim/continue/?claim_id={{claim.id}}">
+<a class="claim_feedlet_link" href="/insurance/claim/continue/?claim_id={{claim.id}}">
 <div class="claim_feedlet">
-<div>
+<div class="claim_feedlet_title">
 {{claim.policy.policy.title}}
+</div>
+
+<div class="claim_feedlet_company">
+{{claim.policy.policy.insurance_company.title}}
+</div>
+
+<div class="claim_feedlet_category">
+{{claim.policy.policy.get_category_display}}
+</div>
+
+<div class="claim_feedlet_message">
+Saved
 </div>
 
 </div>

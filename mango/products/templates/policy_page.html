@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block page_header %}
 <link type="text/css" rel="stylesheet" href="{% static 'policy_page.css'%}"/>
@@ -26,19 +27,21 @@
 <div id="policy_financials">
 <div><b>Monthly Cost:</b> ZMW {{policy.monthly_cost|floatformat:2}}</div>
 <div><b>Coinsurance:</b> {{policy.coinsurance}}%</div>
-<div><b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}</div>
+<div><b>Deductible:</b> ZMW {{policy.deductible|floatformat:2|intcomma}}</div>
+<div><b>Maximum Cover:</b> ZMW {{policy.max_cover|floatformat:2|intcomma}}</div>
 </div>
 
 <br>
 
+{% if subscribed == False %}
 <a id="policy_apply_button_link" href="/insurance/apply/?policy_id={{policy.id}}">
 <div id="policy_apply_button">
 Apply for this plan
 </div>
 </a>
-
+{% else %}
 <button id="policy_cancel_button" class="policy_management_button">Cancel Policy</button>
-
+{% endif %}
 
 
 </div>

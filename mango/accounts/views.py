@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.contrib.auth.models import User
 from django.contrib import auth
-from accounts.models import ClientAccount, CompanyAccount, InsuranceCompanyAccount, PoliceAgentAccount, MedicalAgentAccount, InsuranceCompanyAccount, MangoAgent
+from accounts.models import ClientAccount, CompanyAccount, InsuranceCompanyAccount, PoliceAgentAccount, MedicalAgentAccount, InsuranceCompanyAccount, MangoAgent, AccountType
 
 # Create your views here.
 
