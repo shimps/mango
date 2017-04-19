@@ -5,6 +5,7 @@ from datetime import datetime
 
 # Create your models here.
 insurance_category_choices = (('H','Health'),('M','Motor'),('P','Property'),('T','Travel'),('C','Commercial'))
+sub_category_choices = ()
 #insurance_subcategory_choices = (('G','General'),('V','Vision'),('D','Dental'))
 
 #Basic structure of a policy
@@ -12,6 +13,7 @@ class Policy(models.Model):
     
     title = models.CharField(max_length = 200)
     category = models.CharField(max_length = 3, choices = insurance_category_choices)
+    sub_category = models.CharField(max_length = 10, choices = sub_category_choices,null = True, blank = True)
     max_cover = models.FloatField(default = 0)
     coinsurance = models.IntegerField(default = 0)
     deductible = models.FloatField(default = 0)
