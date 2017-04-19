@@ -5,7 +5,7 @@ from datetime import datetime
 
 # Create your models here.
 insurance_category_choices = (('H','Health'),('M','Motor'),('P','Property'),('T','Travel'),('C','Commercial'))
-sub_category_choices = ()
+sub_category_choices = (('PV','Private Vehicle'),('CV','Commercial Vehicle'),('BT','Bus/Taxi'))
 #insurance_subcategory_choices = (('G','General'),('V','Vision'),('D','Dental'))
 
 #Basic structure of a policy
