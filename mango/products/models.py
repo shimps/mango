@@ -97,6 +97,7 @@ class Claim(models.Model):
 
     auto_insurance = models.BooleanField(default = False)
 
+    date_of_submission = models.DateTimeField(null=True, blank = True)
     submitted = models.BooleanField(default = False)#submitted to insurance company
     decision = models.BooleanField(default = False)#decision has been made
     accepted = models.BooleanField(default = False)#claim has been accepted
@@ -123,7 +124,8 @@ class Application(models.Model):
     
     funding_sources = models.CharField(max_length = 3, choices = funding_choices, null = True, blank = True)
     funding_specify = models.CharField(max_length = 200, null = True, blank = True)
-
+    
+    date_of_submission = models.DateTimeField(null = True, blank = True)
     submitted = models.BooleanField(default = False)
 
     auto_insurance = models.BooleanField(default = False)

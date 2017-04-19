@@ -18,6 +18,21 @@ Pending Claims
 <div class="claim_feed" id="pending_cliam_feed">
 {% for claim in pending_claims %}
 <div class="claim_feedlet">
+<div class="claim_feedlet_title">
+{{claim.policy.policy.title}}
+</div>
+
+<div class="claim_feedlet_company">
+{{claim.policy.policy.insurance_company.title}}
+</div>
+
+<div class="claim_feedlet_category">
+{{claim.policy.policy.get_category_display}}
+</div>
+
+<div class="claim_feedlet_message">
+Pending Decision
+</div>
 
 </div>
 {% empty %}
@@ -37,7 +52,28 @@ Completed Claims
 <div class="claim_feed" id="completed_cliam_feed">
 {% for claim in completed_claims %}
 <div class="claim_feedlet">
-There aren't any completed claims.
+<div class="claim_feedlet_title">
+{{claim.policy.policy.title}}
+</div>
+
+<div class="claim_feedlet_company">
+{{claim.policy.policy.insurance_company.title}}
+</div>
+
+<div class="claim_feedlet_category">
+{{claim.policy.policy.get_category_display}}
+</div>
+
+{% if claim.accepted %}
+<div id="claim_accepted_message" class="claim_feedlet_message">
+<b>Claim Accepted</b>
+</div>
+{% else %}
+<div id="claim_declined_message" class="claim_feedlet_message">
+<b>Claim Declined</b>
+</div>
+{% endif %}
+
 </div>
 {% empty %}
 <div class="claim_feedlet">

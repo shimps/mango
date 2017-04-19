@@ -173,6 +173,13 @@ def continue_policy_application(request):
 
 def view_claims(request):
     args = {}
+
+    pending_claims = Claim.objects.filter(user = request.user, submitted = True, decision = False)
+    completed_claims = Claim.objects.filter(user = request.user, submitted = True, decision = True)
+
+    args['completed_claims'] = completed_claims
+    args['pending_claims'] = pending_claims
+    
     return render_to_response('claims.html',args)
 
 def make_claim(request):
