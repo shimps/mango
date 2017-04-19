@@ -19,7 +19,7 @@
 <div id="claim_box">
 
 
-<form action="/insurance/apply/?policy_id={{policy.id}}" method="post">{% csrf_token %}
+<form id="application_form" action="/insurance/apply/?policy_id={{policy.id}}&action=submit" method="post">{% csrf_token %}
 
 <div class="section_header">
 <b>Your Information</b>
@@ -183,8 +183,8 @@ Type of Cover
 {% block extra_floating_boxes %}
 <div id="application_options_box">
 
-<a class="application_option_link" href="/insurance/apply/save/?policy_id={{policy.id}}">
-<div class="application_option">
+<a class="application_option_link" href="/insurance/apply/?policy_id={{policy.id}}&action=save">
+<div id="save_progress_button" class="application_option">
 Save Progress
 </div>
 </a>

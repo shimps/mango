@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'policy_apply.css'%}"/>
+<script type="text/javascript" src="{% static 'policy_apply.js' %}"></script>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Application</span>
+{% endblock %}
+
+{% block right_menu_item %}
+{% include 'icons/ic_share.html' %}
+{% endblock %}
+
+{% block container %}
+
+<div id="claim_box">
+
+
+<form id="application_form" action="/insurance/apply/?policy_id={{policy.id}}&action=submit" method="post">{% csrf_token %}
+
+<div class="section_header">
+<b>Your Information</b>
+</div>
+
+<div class="form_section">
+
+<p><b>Title</b><br>
+<select name = "title" class="dropdown_menu">
+<option value="MR" {% if application.title == 'MR' %}selected=selected{% endif %}>Mr</option>
+<option value="MRS" {% if application.title == 'MRS' %}selected=selected{% endif %}>Mrs</option>
+<option value="MS" {% if application.title == 'MS' %}selected=selected{% endif %}>Ms</option>
+</select>
+</p>
+
+<p><b>First Name</b>
+<input class="form_field" type="text" name="first_name" value = "{{application.first_name}}"/>
+</p>
+
+<p><b>Last Name</b>
+<input class="form_field" type="text" name="last_name" value = "{{application.last_name}}"/>
+</p>
+
+<p><b>Phone</b>
+<input class="form_field" type="text" name="phone" value = "{{application.telephone}}"/>
+</p>
+
+<p><b>Email</b>
+<input class="form_field" type="text" name="email" value = "{{application.email_address}}"/>
+</p>
+
+
+<p><b>Income</b><br>
+<select class="dropdown_menu" name = "income">
+<option value="L1K" {% if application.income == 'L1K' %} selected=selected {% endif %}>less than ZMW 1000</option>
+<option value="B1K10K" {% if application.income == 'B1K10K' %} selected=selected {% endif %}>between ZMW 1000 - 10000</option>
+<option value="G10K" {% if application.income == 'G10K' %} selected=selected {% endif %}>ZMW 10000 and above</option>
+</select>
+</p>
+
+<p><b>Source of Funds</b><br>
+<select class="dropdown_menu" name = "funding_sources">
+<option value="B" {% if application.funding_sources == 'B' %} selected=selected {% endif %}>Business</option>
+<option value="S" {% if application.funding_sources == 'S' %} selected=selected {% endif %}>Salary</option>
+<option value="O" {% if application.funding_sources == 'O' %} selected=selected {% endif %}>Other</option>
+</select>
+</p>
+
+<p><b>If Other Specify</b>
+<input class="form_field" type="text" name="funding_specify" value="{{application.funding_specify}}"/>
+</p>
+
+</div>
+
+<div class="section_header">
+<b>Vehicle Registration Address</b>
+</div>
+
+<div class="form_section">
+<p><b>Address</b>
+<input class="form_field" type="text" name="vehicle_registration_address" value="{{application.address}}/>
+</p>
+
+<p><b>Town/City</b>
+<input class="form_field" type="text" name="vehicle_registration_city" value = "{{application.city}}"/>
+</p>
+
+<p><b>Country</b>
+<input class="form_field" type="text" name="vehicle_registration_country" value="{{aplication.country}}"/>
+</p>
+
+</div>
+
+<div class="section_header">
+Type of Cover
+</div>
+
+<div class="form_section">
+<p><b>Cover</b><br>
+<select class="dropdown_menu" name="type_of_cover">
+<option value="PKG" {% if application.auto_application.type_of_cover == 'PKG' %}selected=selected{% endif %}>Package</option>
+<option value="FO" {% if application.auto_application.type_of_cover == 'FO' %}selected=selected{% endif %}>Fire Only</option>
+<option value="TO" {% if application.auto_application.type_of_cover == 'TO' %}selected=selected{% endif %}>Theft Only</option>
+<option value="LO" {% if application.auto_application.type_of_cover == 'LO' %}selected=selected{% endif %}>Liability Only</option>
+<option value="FT" {% if application.auto_application.type_of_cover == 'FT' %}selected=selected{% endif %}>Fire and Theft Only</option>
+<option value="FL" {% if application.auto_application.type_of_cover == 'FL' %}selected=selected{% endif %}>Fire and Liability Only</option>
+<option value="TL" {% if application.auto_application.type_of_cover == 'TL' %}selected=selected{% endif %}>Theft and Liability Only</option>
+</select>
+</p>
+</div>
+
+<div class="section_header">
+<b>Vehicle Information</b>
+</div>
+
+<div class="form_section">
+
+<p><b>Condition</b><br>
+<select class="dropdown_menu" name="vehicle_condition">
+<option value="OO" {% if application.auto_application.vehicle_condition == 'OO' %}selected=selected{% endif %}>Original Owner</option>
+<option value="SH" {% if application.auto_application.vehicle_condition == 'SH' %}selected=selected{% endif %}>Second Hand</option>
+</select>
+</p>
+
+<p><b>Make</b>
+<input class="form_field" type="text" name="vehicle_make" value="{{application.auto_application.make}}"/>
+</p>
+
+<p><b>Model</b>
+<input class="form_field" type="text" name="vehicle_model" value="{{application.auto_application.model}}"/>
+</p>
+
+<p><b>Seating Capacity (including driver) </b>
+<input class="form_field" type="text" name="vehicle_seating_capacity" value="{{application.auto_application.seating_capacity}}"/>
+</p>
+
+</div>
+
+<div class="section_header">
+<b>Vehicle Usage and Type</b>
+</div>
+
+<div class="form_section">
+
+<p><b>Normal Usage Area</b><br>
+<select class="dropdown_menu" name="vehicle_usage_area">
+<option value="U" {% if application.auto_application.vehicle_usage_area == 'U' %}selected=selected{% endif %}>Urban</option>
+<option value="R" {% if application.auto_application.vehicle_usage_area == 'R' %}selected=selected{% endif %}>Rural</option>
+</select>
+</p>
+
+<p><b>Vehicle Usage</b><br>
+<select class="dropdown_menu" name="vehicle_usage_type">
+<option value="P" {% if application.auto_application.vehicle_usage_type == 'P' %}selected=selected{% endif %}>Private/Social Purpose</option>
+<option value="D" {% if application.auto_application.vehicle_usage_type == 'D' %}selected=selected{% endif %}>Driving Tuitions</option>
+<option value="T" {% if application.auto_application.vehicle_usage_type == 'T' %}selected=selected{% endif %}>Towing</option>
+</select>
+</p>
+
+</div>
+
+
+
+
+<div class="form_section">
+<p>
+<input id="application_submit_button" type="submit" name="submit" value="Submit Application"/>
+</p>
+</div>
+
+</form>
+
+
+</div>
+
+<br>
+
+{% endblock %}
+
+
+{% block extra_floating_boxes %}
+<div id="application_options_box">
+
+<a class="application_option_link" href="/insurance/apply/?policy_id={{policy.id}}&action=save">
+<div id="save_progress_button" class="application_option">
+Save Progress
+</div>
+</a>
+
+
+</div>
+{% endblock %}
+

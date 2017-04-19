@@ -55,7 +55,8 @@
 }
 
 .message_subject{
-	font-size:0.8em;
+	font-size:0.9em;
+	color:#333333;
 }
 
 .sender_box{

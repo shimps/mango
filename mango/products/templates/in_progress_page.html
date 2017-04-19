@@ -18,18 +18,18 @@ Insurance Application Forms
 
 {% for form in application_forms %}
 
-<a class="application_feedlet_link" href="/insurance/claim/continue/?claim_id={{claim.id}}">
+<a class="application_feedlet_link" href="/insurance/application/continue/?application_id={{form.id}}">
 <div class="application_feedlet">
 <div class="application_feedlet_title">
-{{form.policy.policy.title}}
+{{form.policy.title}}
 </div>
 
 <div class="application_feedlet_company">
-{{form.policy.policy.insurance_company.title}}
+{{form.policy.insurance_company.title}}
 </div>
 
 <div class="application_feedlet_category">
-{{form.policy.policy.get_category_display}}
+{{form.policy.get_category_display}}
 </div>
 
 <div class="application_feedlet_message">

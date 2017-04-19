@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from accounts.models import ClientAccount, CompanyAccount
-from products.models import Claim, ClientPolicy, CompanyPolicy
+from products.models import Claim, ClientPolicy, CompanyPolicy,Application
 
 
 @login_required
@@ -40,9 +40,11 @@ def settings(request):
 
 def in_progress(request):
 
-    saved_claims = Claim.objects.filter(user = request.user, submitted = False) 
+    saved_claims = Claim.objects.filter(user = request.user, submitted = False)
+    saved_applications = Application.objects.filter(user = request.user, submitted = False)
     args = {}
     args['saved_claims'] = saved_claims
+    args['application_forms'] = saved_applications
     return render_to_response('in_progress_page.html',args)
 
 

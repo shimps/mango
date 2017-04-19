@@ -102,7 +102,7 @@ class Claim(models.Model):
     policy = models.ForeignKey(ClientPolicy, related_name = 'policy_claims')
     user = models.ForeignKey(User, related_name = 'claims')
 
-income_choices = (('L1K','< ZMW1000'),('B1K10K','ZMW 1000 - 10000'),('G1K','> ZMW 10000'))
+income_choices = (('L1K','< ZMW1000'),('B1K10K','ZMW 1000 - 10000'),('G10K','> ZMW 10000'))
 funding_choices = (('S','Salary'),('B','Business'),('O','Other'))
 class Application(models.Model):
 

@@ -60,6 +60,8 @@ def apply_for_policy(request):
     policy_id = request.GET.get('policy_id')
     policy = Policy.objects.get(id=policy_id)
 
+    action = request.GET.get('action')
+
     if request.POST:
 
         title = request.POST['title']
@@ -68,11 +70,11 @@ def apply_for_policy(request):
         phone = request.POST['phone']
         email = request.POST['email']
         income = request.POST['income']
-        funding_source = request.POST['funding_sources']
+        funding_sources = request.POST['funding_sources']
         funding_specify = request.POST['funding_specify']
-        address = request.POST['address']
-        city = request.POST['city']
-        country = request.POST['country']
+        address = request.POST['vehicle_registration_address']
+        city = request.POST['vehicle_registration_city']
+        country = request.POST['vehicle_registration_country']
         type_of_cover = request.POST['type_of_cover']
         vehicle_condition = request.POST['vehicle_condition']
         vehicle_make = request.POST['vehicle_make']
@@ -80,11 +82,20 @@ def apply_for_policy(request):
         vehicle_seating_capacity = request.POST['vehicle_seating_capacity']
         vehicle_usage_area = request.POST['vehicle_usage_area']
         vehicle_usage_type = request.POST['vehicle_usage_type']
-        
-        application = Application.objects.create(title = title, first_name = first_name, last_name = last_name,
-                                                 address = address, city = city, country = country, telephone = phone,
-                                                 email_address = email, income = income, funding_sources = funding_sources,
-                                                 funding_specify = funding_specify, auto_insurance = True, policy = policy, user = request.user)
+
+        if action == 'submit':
+            application = Application.objects.create(title = title, first_name = first_name, last_name = last_name,
+                                                     address = address, city = city, country = country, telephone = phone,
+                                                     email_address = email, income = income, funding_sources = funding_sources,
+                                                     funding_specify = funding_specify, auto_insurance = True, submitted = True,
+                                                     policy = policy,user = request.user)
+        elif action == 'save':
+            application = Application.objects.create(title = title, first_name = first_name, last_name = last_name,
+                                                     address = address, city = city, country = country, telephone = phone,
+                                                     email_address = email, income = income, funding_sources = funding_sources,
+                                                     funding_specify = funding_specify, auto_insurance = True, submitted = False,
+                                                     policy = policy, user = request.user)
+            
         AutoApplication.objects.create(type_of_cover = type_of_cover, vehicle_condition = vehicle_condition, make = vehicle_make,
                                        model = vehicle_model, seating_capacity = vehicle_seating_capacity, vehicle_usage_area = vehicle_usage_area,
                                        vehicle_usage_type = vehicle_usage_type, application = application)
@@ -96,6 +107,69 @@ def apply_for_policy(request):
     args['policy'] = policy
     
     return render_to_response('policy_apply.html',args)
+
+def continue_policy_application(request):
+
+    action = request.GET.get('action')
+    application_id = request.GET.get('application_id')
+    application = Application.objects.get(id=application_id)
+
+    if request.POST:
+
+        title = request.POST['title']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        telephone = request.POST['phone']
+        email = request.POST['email']
+        income = request.POST['income']
+        funding_sources = request.POST['funding_sources']
+        funding_specify = request.POST['funding_specify']
+        address = request.POST['vehicle_registration_address']
+        city = request.POST['vehicle_registration_city']
+        country = request.POST['vehicle_registration_country']
+
+        type_of_cover = request.POST['type_of_cover']
+        vehicle_condition = request.POST['vehicle_condition']
+        make = request.POST['vehicle_make']
+        model = request.POST['vehicle_model']
+        seating_capacity = request.POST['vehicle_seating_capacity']
+        vehicle_usage_area = request.POST['vehicle_usage_area']
+        vehicle_usage_type = request.POST['vehicle_usage_type']
+        
+        
+        application.title = title
+        application.first_name = first_name
+        application.address = address
+        application.city = city
+        application.country = country
+        application.telepone = telephone
+        application.email_address = email
+        application.income = income
+        application.funding_sources = funding_sources
+        application.funding_specify = funding_specify
+        application.auto_application.type_of_cover = type_of_cover
+        application.auto_application.vehicle_condition = vehicle_condition
+        application.auto_application.make = make
+        application.auto_application.model = model
+        application.auto_application.seating_capacity = seating_capacity
+        application.auto_application.vehicle_usage_area = vehicle_usage_area
+        application.auto_application.vehicle_usage_type = vehicle_usage_type
+        
+        if action == 'submit':
+            application.submitted = True
+        elif action == 'save':
+            application.submitted = False
+
+        application.save()
+        application.auto_application.save()
+
+        return HttpResponseRedirect('/in_progress/')
+
+    args = {}
+    args.update(csrf(request))
+    args['application'] = application
+    
+    return render_to_response('continue_policy_apply.html',args)
 
 def view_claims(request):
     args = {}
@@ -121,32 +195,39 @@ def make_claim(request):
         country = request.POST['country']
         phone = request.POST['phone']
         email = request.POST['email']
+        
         #Payment Details
         payment_method = request.POST['payment_method']
         payment_details = request.POST['payment_details']
+        
         #Vehicle Details
         vehicle_registration_number = request.POST['vehicle_registration_number']
         vehicle_make = request.POST['vehicle_make']
         vehicle_model = request.POST['vehicle_model']
-        
         vehicle_registration_date = request.POST['vehicle_registration_date']
+        
         if not vehicle_registration_date:
             vehicle_registration_date = None
+            
         #Accident Details
         date_of_accident = request.POST['accident_date']
+        
         if not date_of_accident:
             date_of_accident = None
             
         time_of_accident = request.POST['accident_time']
+        
         if not time_of_accident:
             time_of_accident = None
             
         place_of_accident = request.POST['accident_place']
+        
         #Police Station Details
         police_station = request.POST['police_station']
         garage = request.POST['garage']
         loss_estimate = request.POST['loss_estimate']
         number_in_vehicle = request.POST['number_in_vehicle']
+        
         #Driver Details
         driver_name = request.POST['driver_name']
         
@@ -161,6 +242,7 @@ def make_claim(request):
             license_expiry_of_driver = None
         
         vehicle_authorization = request.POST['vehicle_authorization']
+        
         #Other Insurance Companies
         insurance_company = request.POST['o_insurance_company']
         insurance_policy_number = request.POST['o_insurance_policy_number']
@@ -220,23 +302,28 @@ def continue_claim(request):
         country = request.POST['country']
         phone = request.POST['phone']
         email = request.POST['email']
+        
         #Payment Details
         payment_method = request.POST['payment_method']
         payment_details = request.POST['payment_details']
+        
         #Vehicle Details
         vehicle_registration_number = request.POST['vehicle_registration_number']
         vehicle_make = request.POST['vehicle_make']
         vehicle_model = request.POST['vehicle_model']
-        
         vehicle_registration_date = request.POST['vehicle_registration_date']
+        
         if not vehicle_registration_date:
             vehicle_registration_date = None
+            
         #Accident Details
         date_of_accident = request.POST['accident_date']
+        
         if not date_of_accident:
             date_of_accident = None
             
         time_of_accident = request.POST['accident_time']
+        
         if not time_of_accident:
             time_of_accident = None
             
@@ -276,46 +363,25 @@ def continue_claim(request):
         if not insurance_end_date or insurance_end_date == 'None':
             insurance_end_date = None
 
+
+        claim.title = title
+        claim.first_name = first_name
+        claim.last_name = last_name
+        claim.address = address
+        claim.city = city
+        claim.country = country
+        claim.telephone = phone
+        claim.email_address = email
+        claim.payment_method = payment_method
+        claim.auto_insurance = True
+
         if action == 'submit':
-            
-            claim.title = title
-            claim.first_name = first_name
-            claim.last_name = last_name
-            claim.address = address
-            claim.city = city
-            claim.country = country
-            claim.telephone = phone
-            claim.email_address = email
-            claim.payment_method = payment_method
-            claim.auto_insurance = True
             claim.submitted = True
-            claim.save()
-            
-            '''
-            Claim.objects.update_or_create(id = claim.id, title = title, first_name = first_name, last_name = last_name, address = address, city = city,
-                     country = country, telephone = phone, email_address = email, payment_method = payment_method,
-                     auto_insurance = True, submitted = True)
-            '''
             
         elif action == 'save':
-            
-            claim.title = title
-            claim.first_name = first_name
-            claim.last_name = last_name
-            claim.address = address
-            claim.city = city
-            claim.country = country
-            claim.telephone = phone
-            claim.email_address = email
-            claim.payment_method = payment_method
-            claim.auto_insurance = True
             claim.submitted = False
-            claim.save()
-            '''
-            Claim.objects.update_or_create(id = claim.id,title = title, first_name = first_name, last_name = last_name, address = address, city = city,
-                     country = country, telephone = phone, email_address = email, payment_method = payment_method,
-                     auto_insurance = True, submitted = False)
-            '''
+            
+        claim.save()
 
         auto_claim = claim.auto_claim
         auto_claim.registration_number = vehicle_registration_number

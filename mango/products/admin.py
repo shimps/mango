@@ -3,6 +3,7 @@ from models import Policy, Claim, Application, AutoClaim, AutoApplication, Cover
 # Register your models here.
 admin.site.register(Policy)
 admin.site.register(Claim)
+admin.site.register(Application)
 admin.site.register(AutoClaim)
 admin.site.register(AutoApplication)
 admin.site.register(CoverageType)

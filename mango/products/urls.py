@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^create_policy/$',views.create_policy, name = 'create_policy'),
     url(r'^policy/$',views.view_policy, name = 'view_policy'),
     url(r'^apply/$',views.apply_for_policy, name = 'apply_for_policy'),
+    url(r'application/continue/$',views.continue_policy_application, name = 'continue_policy_application'),
     url(r'^claims/$',views.view_claims, name = 'view_claims'),
     url(r'^make_claim/$',views.make_claim, name = 'make_claim'),
     url(r'^claim/continue/$',views.continue_claim, name = 'continue_claim'),
