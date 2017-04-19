@@ -100,7 +100,7 @@ class Claim(models.Model):
     submitted = models.BooleanField(default = False)#submitted to insurance company
     decision = models.BooleanField(default = False)#decision has been made
     accepted = models.BooleanField(default = False)#claim has been accepted
-    declined - models.BooleanField(default = False)#claim has been declined
+    declined = models.BooleanField(default = False)#claim has been declined
 
     policy = models.ForeignKey(ClientPolicy, related_name = 'policy_claims')
     user = models.ForeignKey(User, related_name = 'claims')
