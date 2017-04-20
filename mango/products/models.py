@@ -19,6 +19,9 @@ class Policy(models.Model):
     deductible = models.FloatField(default = 0)
     monthly_cost = models.FloatField(default = 0)
     
+    required_documents_application = models.CharField(max_length = 200, null=True, blank=True)
+    required_documents_claim = models.CharField(max_length = 200, null = True, blank = True)
+    
     insurance_company = models.ForeignKey(InsuranceCompanyAccount, related_name = 'policies', null = True, blank = True)
 
     def __unicode__(self):
