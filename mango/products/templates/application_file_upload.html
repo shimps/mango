@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'policy_apply.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Application</span>
+{% endblock %}
+
+{% block container %}
+
+<div id="application_box">
+
+<div class="section_header">
+Upload Required Documents
+</div>
+
+<div class="form_section">
+
+<form action="/insurance/application/upload_files/?application_id={{application.id}}" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+
+
+<div class="form_section">
+Please upload the following files: {{application.policy.required_documents_application}}
+
+{% if application.files.all.count > 0 %}
+
+<p>You've already uploaded:</p>
+<ul>
+{% for file in application.files.all %}
+<li>{{file.file_name}} {% if file.verified == True %}<span style="color:green">(verified)</span>{% else %}<span style="color:gray">(unverified)</span>{% endif %}</li>
+{% endfor %}
+</ul>
+
+{% endif %}
+
+<div id="file_box">
+<div class="file_pair">
+<b>What document is this?</b><br>
+<input class="filename_field" type="text" name="filename"/> <input class="file_field" type="file" name="file"/>
+</div>
+</div>
+
+<input id="number_of_files" type="hidden" name="number_of_files" value="0"/>
+
+<input  class="form_button" type="submit" name="submit" value="Submit Application"/>
+
+</div>
+</form>
+</div>
+
+<script type="text/javascript">
+
+var file_box = $('#file_box');
+var number_of_files = $('#number_of_files');
+var file_number = 1;
+
+
+$('#file_box').on('.file_field change',function(){
+	var $this = $(this);
+	old_number = $this.find('.file_field').length;
+	
+	if($('.file_field').last().val() == ''){
+		
+	}else{
+		file_box.append('<div class="file_pair"><b>What document is this?</b><br><input class="filename_field" type="text" name="filename'+file_number+'"/> <input class="file_field" type="file" name="file'+file_number+'"/></div>');
+		number_of_files.val(file_number);
+		file_number += 1;
+	}
+	
+	})
+	
+
+
+</script>
+</div>
+{% endblock %}

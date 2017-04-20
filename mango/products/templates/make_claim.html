@@ -18,7 +18,7 @@
 
 <div id="claim_box">
 
-<form id="claim_form" action="/insurance/claim/?policy_id={{policy.id}}&action=submit" method="post">{% csrf_token %}
+<form id="claim_form" action="/insurance/make_claim/?policy_id={{policy.id}}&action=submit" method="post">{% csrf_token %}
 
 <div class="section_header">
 <b>Policy Holder Information</b>
@@ -195,7 +195,7 @@ Submit Claim
 </div>
 -->
 
-<input id="submit_claim_button" type="submit" name="submit" value="Submit Claim"/>
+<input id="submit_claim_button" type="submit" name="submit" value="Save and Continue"/>
 </div>
 
 </form>

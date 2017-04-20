@@ -2,7 +2,7 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.context_processors import csrf
 from accounts.models import InsuranceCompanyAccount, ClientAccount, CompanyAccount
-from products.models import Policy, ClientPolicy, insurance_category_choices, Claim, AutoClaim, Application, AutoApplication
+from products.models import Policy, ClientPolicy, insurance_category_choices, Claim, AutoClaim, Application, AutoApplication, FileAttachment
 import datetime
 # Create your views here.
 def insurance_types(request):
@@ -87,7 +87,7 @@ def apply_for_policy(request):
             application = Application.objects.create(title = title, first_name = first_name, last_name = last_name,
                                                      address = address, city = city, country = country, telephone = phone,
                                                      email_address = email, income = income, funding_sources = funding_sources,
-                                                     funding_specify = funding_specify, auto_insurance = True, submitted = True,
+                                                     funding_specify = funding_specify, auto_insurance = True, submitted = False,
                                                      policy = policy,user = request.user)
         elif action == 'save':
             application = Application.objects.create(title = title, first_name = first_name, last_name = last_name,
@@ -100,7 +100,7 @@ def apply_for_policy(request):
                                        model = vehicle_model, seating_capacity = vehicle_seating_capacity, vehicle_usage_area = vehicle_usage_area,
                                        vehicle_usage_type = vehicle_usage_type, application = application)
         
-        return HttpResponseRedirect('/insurance/policy/?policy_id=%s'%policy_id)
+        return HttpResponseRedirect('/insurance/apply/upload_files/?application_id=%s'%application.id)
 
     args = {}
     args.update(csrf(request))
@@ -156,13 +156,14 @@ def continue_policy_application(request):
         application.auto_application.vehicle_usage_type = vehicle_usage_type
         
         if action == 'submit':
-            application.submitted = True
+            application.submitted = False
         elif action == 'save':
             application.submitted = False
 
         application.save()
         application.auto_application.save()
 
+        return HttpResponseRedirect('/insurance/apply/upload_files/?application_id=%s'%application.id)
         return HttpResponseRedirect('/in_progress/')
 
     args = {}
@@ -170,6 +171,32 @@ def continue_policy_application(request):
     args['application'] = application
     
     return render_to_response('continue_policy_apply.html',args)
+
+def upload_application_files(request):
+
+    application_id = request.GET.get('application_id')
+    application = Application.objects.get(id=application_id)
+
+    if request.POST:
+        file_number = int(request.POST['number_of_files'])
+        
+        if file_number > 0:
+            file_object = request.FILES['file']
+            file_name = request.POST['filename']
+
+            FileAttachment.objects.create(file_name=file_name, attachment=file_object,application = application)
+            
+            for i in range(1,file_number):
+                file_object = request.FILES['file%s'%i]
+                file_name = request.POST['filename%s'%i]
+                FileAttachment.objects.create(file_name=file_name, attachment=file_object,application = application)
+
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    
+    args = {}
+    args.update(csrf(request))
+    args['application'] = application
+    return render_to_response('application_file_upload.html',args)
 
 def view_claims(request):
     args = {}
@@ -266,7 +293,7 @@ def make_claim(request):
         if action == 'submit':
             claim = Claim.objects.create(title = title, first_name = first_name, last_name = last_name, address = address, city = city,
                                  country = country, telephone = phone, email_address = email, payment_method = payment_method,
-                                 auto_insurance = True, submitted = True, policy = client_policy, user = request.user )
+                                 auto_insurance = True, submitted = False, policy = client_policy, user = request.user )
         elif action == 'save':
             claim = Claim.objects.create(title = title, first_name = first_name, last_name = last_name, address = address, city = city,
                                  country = country, telephone = phone, email_address = email, payment_method = payment_method,
@@ -281,7 +308,7 @@ def make_claim(request):
                                  o_insurance_end_date = insurance_end_date, claim = claim)
         
 
-        
+        return HttpResponseRedirect('/insurance/claim/upload_files/?claim_id=%s'%claim.id)
         return HttpResponse('/insurance/policy/?policy_id=%s'%policy_id)
 
     args = {}
@@ -383,7 +410,7 @@ def continue_claim(request):
         claim.auto_insurance = True
 
         if action == 'submit':
-            claim.submitted = True
+            claim.submitted = False
             
         elif action == 'save':
             claim.submitted = False
@@ -414,8 +441,8 @@ def continue_claim(request):
 
         auto_claim.save()
         
+        return HttpResponseRedirect('/insurance/claim/upload_files/?claim_id=%s'%claim.id)
         
-
         return HttpResponseRedirect('/in_progress/')
 
     args = {}
@@ -425,6 +452,32 @@ def continue_claim(request):
     args['policy'] = claim.policy.policy
     
     return render_to_response('continue_claim.html',args)
+
+def upload_claim_files(request):
+
+    claim_id = request.GET.get('claim_id')
+    claim = Claim.objects.get(id = claim_id)
+
+    if request.POST:
+        file_number = int(request.POST['number_of_files'])
+        
+        if file_number > 0:
+            file_object = request.FILES['file']
+            file_name = request.POST['filename']
+
+            FileAttachment.objects.create(file_name=file_name, attachment=file_object,claim = claim)
+            
+            for i in range(1,file_number):
+                file_object = request.FILES['file%s'%i]
+                file_name = request.POST['filename%s'%i]
+                FileAttachment.objects.create(file_name=file_name, attachment=file_object,claim = claim)
+
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    
+    args = {}
+    args.update(csrf(request))
+    args['claim'] = claim
+    return render_to_response('claim_file_upload.html',args)
 
 def save_application(request):
 

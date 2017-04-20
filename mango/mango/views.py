@@ -22,7 +22,10 @@ def home(request):
     elif logged_user.account_type.company == True:
         company_account = CompanyAccount.objects.get(user = request.user)
         my_policies = CompanyPolicy.objects.filter(company = company_account)
-        
+
+    pending_claims = Claim.objects.filter(user = request.user,submitted=True,decision=False)
+    
+    args['pending_claims'] = pending_claims
     args['current_policies'] = my_policies
     args['logged_user'] = logged_user
     return render_to_response('home.html',args)

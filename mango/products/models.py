@@ -2,6 +2,7 @@ from django.db import models
 from accounts.models import InsuranceCompanyAccount, ClientAccount, CompanyAccount, MedicalAgentAccount,ServiceAgentAccount, PoliceAgentAccount, MedicalAgentAccount
 from django.contrib.auth.models import User
 from datetime import datetime
+from time import time
 
 # Create your models here.
 insurance_category_choices = (('H','Health'),('M','Motor'),('P','Property'),('T','Travel'),('C','Commercial'))
