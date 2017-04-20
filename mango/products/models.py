@@ -8,6 +8,10 @@ insurance_category_choices = (('H','Health'),('M','Motor'),('P','Property'),('T'
 sub_category_choices = (('PV','Private Vehicle'),('CV','Commercial Vehicle'),('BT','Bus/Taxi'))
 #insurance_subcategory_choices = (('G','General'),('V','Vision'),('D','Dental'))
 
+#A Helper function to help with uploads.Generates a filename through a time string
+def get_upload_file_name(instance,filename):
+    return "uploads/documents/%s_%s"%(str(time()).replace('.','_'),filename)
+
 #Basic structure of a policy
 class Policy(models.Model):
     
@@ -193,7 +197,7 @@ class AutoApplication(models.Model):
 class FileAttachment(models.Model):
 
     file_name = models.CharField(max_length=100,null=True, blank=True)
-    attachment = models.FileField(null = True, blank = True)
+    attachment = models.FileField(upload_to=get_upload_file_name, null = True, blank = True)
     application = models.ForeignKey(Application, related_name = 'files',null = True, blank = True)
     claim = models.ForeignKey(Claim, related_name = 'files', null = True, blank = True)
     medical_institution = models.ForeignKey(MedicalAgentAccount, related_name = 'verification_list', null = True, blank = True)
