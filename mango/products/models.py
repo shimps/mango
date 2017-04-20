@@ -189,8 +189,8 @@ class AutoApplication(models.Model):
 
 class FileAttachment(models.Model):
 
-    
-    file_object = models.FileField(null = True, blank = True)
+    file_name = models.CharField(max_length=100,null=True, blank=True)
+    attachment = models.FileField(null = True, blank = True)
     application = models.ForeignKey(Application, related_name = 'files',null = True, blank = True)
     claim = models.ForeignKey(Claim, related_name = 'files', null = True, blank = True)
     medical_institution = models.ForeignKey(MedicalAgentAccount, related_name = 'verification_list', null = True, blank = True)
