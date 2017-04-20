@@ -18,7 +18,8 @@ province_choices = (('COP','Copperbelt'),('LUS','Lusaka'),('CEN','Central'),('NW
                     ('WES','Western'))
 country_choices = (('ZM','Zambia'),)
 employment_status_choices = (('E','Employed'),('U','Unemployed'),('S','Self Employed / Contractor'))
-
+occupation_types = (('FR','Farming'),('FN','Finance'),('BN','Banking'),('TL','Telecoms'),('MD','Media'),('CN','Construction'),
+                    ('LW','Law'),('MD','Medicine'),('MN','Manufacturing'),('TC','Technology'),('CON','Construction'))
 
 # clients are individual users
 class ClientAccount(models.Model):

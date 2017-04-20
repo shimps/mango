@@ -14,195 +14,20 @@
 {{category}} Plans
 </div>
 
-<br>
-<div class="section_header">
-<b>Private Vehicle</b>
-</div>
+
 
 <div id="policy_feed">
-{% for policy in policies %}
-
-{% if policy.sub_category == 'PV' %}
-
-
-<a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
-<div class="policy_feedlet">
-
-
-<div class="policy_feedlet_details">
-
-<div class="policy_feedlet_title">
-{{policy.title}}
-</div>
-
-<div class="policy_feedlet_company">
-{{policy.insurance_company.title}}
-</div>
-
-<div class="policy_feedlet_category">
-{{policy.get_category_display}}
-</div>
-
-<div class="policy_feedlet_premium">
-<b>Monthly Costs:</b> ZMW {{policy.monthly_cost|floatformat:2}}<br>
-<b>Coinsurance:</b> {{policy.coinsurance}}%<br>
-<b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}
-</div>
-
-</div>
-<div class="policy_feedlet_buttons">
-
-<div class="feedlet_visit_button">
-SHOW
-</div>
-</div>
-
-</div>
-</a>
-
+{% if category == 'Motor' %}
+{% include 'auto_category_policy_list.html' %}
+{% elif category == 'Health' %}
+{% include 'health_category_policy_list.html' %}
+{% elif category == 'Property' %}
+{% include 'property_category_policy_list.html' %}
+{% elif category == 'Travel' %}
+{% include 'travel_category_policy_list.html' %}
+{% elif category == 'Commercial'}
+{% include 'commercial_category_policy_list.html' %}
 {% endif %}
-
-{% endfor %}
-
-<br>
-<div class="section_header">
-<b>Commercial Vehicle</b>
-</div>
-{% for policy in policies %}
-{% if policy.sub_category == 'CV' %}
-
-<a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
-<div class="policy_feedlet">
-
-
-<div class="policy_feedlet_details">
-
-<div class="policy_feedlet_title">
-{{policy.title}}
-</div>
-
-<div class="policy_feedlet_company">
-{{policy.insurance_company.title}}
-</div>
-
-<div class="policy_feedlet_category">
-{{policy.get_category_display}}
-</div>
-
-<div class="policy_feedlet_premium">
-<b>Monthly Costs:</b> ZMW {{policy.monthly_cost|floatformat:2}}<br>
-<b>Coinsurance:</b> {{policy.coinsurance}}%<br>
-<b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}
-</div>
-
-</div>
-<div class="policy_feedlet_buttons">
-
-<div class="feedlet_visit_button">
-SHOW
-</div>
-</div>
-
-</div>
-</a>
-
-{% endif %}
-{% endfor %}
-
-<br>
-<div class="section_header">
-<b>Bus / Taxi</b>
-</div>
-{% for policy in policies %}
-{% if policy.sub_category == 'BT' %}
-
-<a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
-<div class="policy_feedlet">
-
-
-<div class="policy_feedlet_details">
-
-<div class="policy_feedlet_title">
-{{policy.title}}
-</div>
-
-<div class="policy_feedlet_company">
-{{policy.insurance_company.title}}
-</div>
-
-<div class="policy_feedlet_category">
-{{policy.get_category_display}}
-</div>
-
-<div class="policy_feedlet_premium">
-<b>Monthly Costs:</b> ZMW {{policy.monthly_cost|floatformat:2}}<br>
-<b>Coinsurance:</b> {{policy.coinsurance}}%<br>
-<b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}
-</div>
-
-</div>
-<div class="policy_feedlet_buttons">
-
-<div class="feedlet_visit_button">
-SHOW
-</div>
-</div>
-
-</div>
-</a>
-
-{% endif %}
-{% endfor %}
-
-<br>
-<div class="section_header">
-<b>Other</b>
-</div>
-{% for policy in policies %}
-{% if policy.sub_category == None %}
-
-<a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
-<div class="policy_feedlet">
-
-
-<div class="policy_feedlet_details">
-
-<div class="policy_feedlet_title">
-{{policy.title}}
-</div>
-
-<div class="policy_feedlet_company">
-{{policy.insurance_company.title}}
-</div>
-
-<div class="policy_feedlet_category">
-{{policy.get_category_display}}
-</div>
-
-<div class="policy_feedlet_premium">
-<b>Monthly Costs:</b> ZMW {{policy.monthly_cost|floatformat:2}}<br>
-<b>Coinsurance:</b> {{policy.coinsurance}}%<br>
-<b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}
-</div>
-
-</div>
-<div class="policy_feedlet_buttons">
-
-<div class="feedlet_visit_button">
-SHOW
-</div>
-</div>
-
-</div>
-</a>
-
-{% endif %}
-
-{% empty %}
-<div class="policy_feedlet">
-There are no plans in this category
-</div>
-{% endfor %}
 
 </div>
 {% endblock %}

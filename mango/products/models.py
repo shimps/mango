@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import InsuranceCompanyAccount, ClientAccount, CompanyAccount
+from accounts.models import InsuranceCompanyAccount, ClientAccount, CompanyAccount, MedicalAgentAccount,ServiceAgentAccount, PoliceAgentAccount, MedicalAgentAccount
 from django.contrib.auth.models import User
 from datetime import datetime
 
@@ -185,6 +185,19 @@ class AutoApplication(models.Model):
 
     application = models.OneToOneField(Application, related_name = 'auto_application')
     
+    
+
+class FileAttachment(models.Model):
+
+    
+    file_object = models.FileField(null = True, blank = True)
+    application = models.ForeignKey(Application, related_name = 'files',null = True, blank = True)
+    claim = models.ForeignKey(Claim, related_name = 'files', null = True, blank = True)
+    medical_institution = models.ForeignKey(MedicalAgentAccount, related_name = 'verification_list', null = True, blank = True)
+    police_station = models.ForeignKey(PoliceAgentAccount, related_name = 'verification_list', null = True, blank=True)
+    service_agent = models.ForeignKey(ServiceAgentAccount, related_name = 'verification_list', null = True, blank = True)
+    
+    verified = models.BooleanField(default = False)
     
     
     

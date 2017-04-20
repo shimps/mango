@@ -1,0 +1,41 @@
+{% for policy in policies %}
+
+
+<a class="policy_feedlet_link" href="/insurance/policy/?policy_id={{policy.id}}">
+<div class="policy_feedlet">
+
+
+<div class="policy_feedlet_details">
+
+<div class="policy_feedlet_title">
+{{policy.title}}
+</div>
+
+<div class="policy_feedlet_company">
+{{policy.insurance_company.title}}
+</div>
+
+<div class="policy_feedlet_category">
+{{policy.get_category_display}}
+</div>
+
+<div class="policy_feedlet_premium">
+<b>Monthly Costs:</b> ZMW {{policy.monthly_cost|floatformat:2}}<br>
+<b>Coinsurance:</b> {{policy.coinsurance}}%<br>
+<b>Deductible:</b> ZMW {{policy.deductible|floatformat:2}}
+</div>
+
+</div>
+<div class="policy_feedlet_buttons">
+
+<div class="feedlet_visit_button">
+SHOW
+</div>
+</div>
+
+</div>
+</a>
+
+{% empty %}
+Nothing
+{% endfor %}

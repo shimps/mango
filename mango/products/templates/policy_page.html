@@ -74,6 +74,7 @@ Apply for this plan
 {% block extra_floating_boxes %}
 <div id="policy_options_box">
 
+{% if subscribed == True %}
 <a class="policy_option_link" href="/insurance/payment_options/?policy_id={{policy.id}}">
 <div class="policy_option">
 Pay your Premium
@@ -85,6 +86,8 @@ Pay your Premium
 Make a Claim
 </div>
 </a>
+
+{% endif %}
 
 <a class="policy_option_link" href="/messages/ask/?policy_id={{policy.id}}">
 <div class="policy_option">
