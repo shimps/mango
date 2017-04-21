@@ -178,6 +178,9 @@ def upload_application_files(request):
     application = Application.objects.get(id=application_id)
 
     if request.POST:
+
+        action = request.GET.get('action')
+        
         file_number = int(request.POST['number_of_files'])
         
         if file_number > 0:
@@ -191,7 +194,11 @@ def upload_application_files(request):
                 file_name = request.POST['filename%s'%i]
                 FileAttachment.objects.create(file_name=file_name, attachment=file_object,application = application)
 
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        if action == 'submit':
+            application.submitted = True
+            application.save()
+            
+        return HttpResponseRedirect('/insurance/my/')
     
     args = {}
     args.update(csrf(request))
@@ -459,6 +466,9 @@ def upload_claim_files(request):
     claim = Claim.objects.get(id = claim_id)
 
     if request.POST:
+
+        action = request.GET.get('action')
+        
         file_number = int(request.POST['number_of_files'])
         
         if file_number > 0:
@@ -472,7 +482,10 @@ def upload_claim_files(request):
                 file_name = request.POST['filename%s'%i]
                 FileAttachment.objects.create(file_name=file_name, attachment=file_object,claim = claim)
 
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        if action == 'submit':
+            claim.submitted = True
+            claim.save()
+        return HttpResponseRedirect('/insurance/claims/')
     
     args = {}
     args.update(csrf(request))

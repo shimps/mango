@@ -3,10 +3,15 @@
 
 {% block page_header %}
 <link type="text/css" rel="stylesheet" href="{% static 'make_claim.css'%}"/>
+<script type="text/javascript" src="{% static 'claim_form_file_loader.js' %}"></script>
 {% endblock %}
 
 {% block mid_menu_item %}
 <span id="status_bar_title">Make Claim</span>
+{% endblock %}
+
+{% block right_menu_item %}
+{% include 'icons/ic_share.html' %}
 {% endblock %}
 
 {% block container %}
@@ -19,7 +24,7 @@ Upload Required Documents
 
 <div class="form_section">
 
-<form action="/insurance/claim/upload_files/?claim_id={{claim.id}}" method="post" enctype="multipart/form-data">{% csrf_token %}
+<form id="claim_form" action="/insurance/claim/upload_files/?claim_id={{claim.id}}&action=submit" method="post" enctype="multipart/form-data">{% csrf_token %}
 
 
 
@@ -46,7 +51,7 @@ Please upload the following files: {{claim.policy.policy.required_documents_clai
 
 <input id="number_of_files" type="hidden" name="number_of_files" value="0"/>
 
-<input  class="form_button" type="submit" name="submit" value="Submit Claim"/>
+<input  id="form_submit_button" class="form_button" type="submit" name="submit" value="Submit Claim"/>
 
 </div>
 </form>
@@ -76,5 +81,18 @@ $('#file_box').on('.file_field change',function(){
 
 
 </script>
+</div>
+{% endblock %}
+
+{% block extra_floating_boxes %}
+<div id="claim_options_box">
+
+<a  id="save_progress_button_link" class="claim_option_link" href="/insurance/claim/upload_files/?claim_id={{claim.id}}&action=save">
+<div id="save_progress_button" class="claim_option">
+Save Progress
+</div>
+</a>
+
+
 </div>
 {% endblock %}

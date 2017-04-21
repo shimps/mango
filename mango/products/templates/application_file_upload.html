@@ -3,10 +3,15 @@
 
 {% block page_header %}
 <link type="text/css" rel="stylesheet" href="{% static 'policy_apply.css'%}"/>
+<script type="text/javascript" src="{% static 'application_form_file_loader.js' %}"></script>
 {% endblock %}
 
 {% block mid_menu_item %}
 <span id="status_bar_title">Application</span>
+{% endblock %}
+
+{% block right_menu_item %}
+{% include 'icons/ic_share.html' %}
 {% endblock %}
 
 {% block container %}
@@ -19,7 +24,7 @@ Upload Required Documents
 
 <div class="form_section">
 
-<form action="/insurance/application/upload_files/?application_id={{application.id}}" method="post" enctype="multipart/form-data">{% csrf_token %}
+<form id="application_form" action="/insurance/apply/upload_files/?application_id={{application.id}}&action=submit" method="post" enctype="multipart/form-data">{% csrf_token %}
 
 
 
@@ -46,7 +51,7 @@ Please upload the following files: {{application.policy.required_documents_appli
 
 <input id="number_of_files" type="hidden" name="number_of_files" value="0"/>
 
-<input  class="form_button" type="submit" name="submit" value="Submit Application"/>
+<input  id="form_submit_button" class="form_button" type="submit" name="submit" value="Submit Application"/>
 
 </div>
 </form>
@@ -76,5 +81,18 @@ $('#file_box').on('.file_field change',function(){
 
 
 </script>
+</div>
+{% endblock %}
+
+{% block extra_floating_boxes %}
+<div id="application_options_box">
+
+<a  id="save_progress_button_link" class="application_option_link" href="/insurance/apply/upload_files/?application_id={{application.id}}&action=save">
+<div id="save_progress_button" class="application_option">
+Save Progress
+</div>
+</a>
+
+
 </div>
 {% endblock %}

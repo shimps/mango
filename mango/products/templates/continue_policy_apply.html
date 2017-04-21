@@ -19,7 +19,7 @@
 <div id="claim_box">
 
 
-<form id="application_form" action="/insurance/apply/?policy_id={{policy.id}}&action=submit" method="post">{% csrf_token %}
+<form id="application_form" action="/insurance/application/continue/?application_id={{application.id}}&action=submit" method="post">{% csrf_token %}
 
 <div class="section_header">
 <b>Your Information</b>
@@ -166,7 +166,7 @@ Type of Cover
 
 <div class="form_section">
 <p>
-<input id="application_submit_button" type="submit" name="submit" value="Submit Application"/>
+<input id="application_submit_button" type="submit" name="submit" value="Save and Continue"/>
 </p>
 </div>
 
@@ -185,7 +185,7 @@ Type of Cover
 
 <a class="application_option_link" href="/insurance/apply/?policy_id={{policy.id}}&action=save">
 <div id="save_progress_button" class="application_option">
-Save and Continue
+Save Progress
 </div>
 </a>
 
