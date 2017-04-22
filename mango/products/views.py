@@ -35,6 +35,12 @@ def create_policy(request):
     args.update(csrf(request))
     return render_to_response('create_policy_page.html',args)
 
+def view_recommendations(request):
+
+    args = {}
+
+    return render_to_response('view_recommendations.html',args)
+
 def view_policy(request):
 
     logged_user = request.user

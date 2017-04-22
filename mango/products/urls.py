@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'^apply/save/$',views.save_application, name = 'save_application'),
     url(r'^policies/$',views.view_policies, name = 'view_policies'),
     url(r'^payment_options/$',views.view_payment_options, name = 'view_payment_options'),
+    url(r'recommendations/$',views.view_recommendations, name = 'view_recommendations'),
     
     ]
