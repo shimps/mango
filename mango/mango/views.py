@@ -47,6 +47,12 @@ def about_insurance(request):
 
     return render_to_response('about_insurance.html',args)
 
+def view_notifications(request):
+
+    args = {}
+
+    return render_to_response('view_notifications.html',args)
+
 def in_progress(request):
 
     saved_claims = Claim.objects.filter(user = request.user, submitted = False)

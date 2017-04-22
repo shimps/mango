@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'view_notifications.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">Feed</span>
+{% endblock %}
+
+{% block container %}
+
+<div id="notification_feed">
+
+<div class="notification_feedlet">
+<div class="notification_image">
+
+</div>
+
+<div class="notification_meta">
+<p>Your premium payment to Professional Insurance has been confirmed.</p>
+</div>
+</div>
+
+
+<div class="notification_feedlet">
+<div class="notification_image">
+
+</div>
+
+<div class="notification_meta">
+<p>Your premium payment to Professional Insurance has been confirmed.</p>
+</div>
+</div>
+
+</div>
+
+{% endblock %}
