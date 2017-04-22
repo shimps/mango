@@ -1,0 +1,22 @@
+.section_header{
+	font-family:'Arial';
+	font-size:1em;
+	color:#666666;
+	padding-top:1em;
+	padding-bottom:0.5em;
+	padding-left:0.5em;
+	border-bottom:solid 1px #D3D0D0;
+	background-color:#FFFFFF;
+	box-sizing:border-box;
+
+}
+
+.section_header:active{
+	background-color:#D3D0D0;
+}
+
+.section{
+	padding:0.5em;
+	background-color:#FFFFFF;
+	box-sizing:border-box;
+}

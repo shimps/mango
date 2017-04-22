@@ -31,8 +31,8 @@
 	width:100%;
 	box-sizing:border-box;
 	border-bottom:solid 1px #90A4AE;
-	padding:15px;
-	height:56px;
+	#padding-top:30px;
+	height:48px;
 	font-size:1em;
 }
 .side_menu_item{
@@ -40,8 +40,8 @@
 	width:100%;
 	box-sizing:border-box;
 	border-bottom:solid 1px #90A4AE;
-	padding:20px;
-	height:56px;
+	padding:15px;
+	padding-left:25px;
 	font-size:1em;
 	text-decoration:none;
 }

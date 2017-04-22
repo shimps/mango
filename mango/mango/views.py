@@ -41,6 +41,12 @@ def settings(request):
     args = {}
     return render_to_response('settings.html',args)
 
+def about_insurance(request):
+
+    args = {}
+
+    return render_to_response('about_insurance.html',args)
+
 def in_progress(request):
 
     saved_claims = Claim.objects.filter(user = request.user, submitted = False)

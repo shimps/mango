@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<link type="text/css" rel="stylesheet" href="{% static 'about_insurance.css'%}"/>
+{% endblock %}
+
+{% block mid_menu_item %}
+<span id="status_bar_title">About Insurance</span>
+{% endblock %}
+
+{% block container %}
+
+<div class="section_header">
+What is Insurance?
+</div>
+
+<div class="section">
+ It is something people buy to protect themselves from losing money. People who buy insurance pay a "premium" (often paid every month) and promise to be careful (a "duty of care"). In exchange for this, if something bad happens to the person or thing that is insured, the company that sold the insurance will pay money back. 
+</div>
+
+
+<div class="section_header">
+What is an Insurance Policy?
+</div>
+
+<div class="section">
+Your contract with the insurance company. Specifies details on premiums, coverage etc.
+</div>
+
+<div class="section_header">
+What is a Premium?
+</div>
+
+<div class="section">
+An insurance premium is the amount of money that an individual or business must pay for an insurance policy.Can be paid monthly, quarterly or yearly.
+</div>
+
+<div class="section_header">
+What is Dedudctible?
+</div>
+
+<div class="section">
+The amount the insured must pay in a loss before any payment is due from the company. For example if your bill is ZMW 1000, and your deductible is ZMW 400, you have to first pay the ZMW400 before you activate your insurance policy to help pay for the rest.
+</div>
+
+<div class="section_header">
+What is Coinsurance
+</div>
+
+<div class="section">
+The percentage of each health care bill a person must pay out of their own pocket. Non-covered charges and deductibles are in addition to this amount.
+</div>
+
+<div class="section_header">
+What is s Claim?
+</div>
+
+<div class="section">
+A policyholder's request for reimbursement from an insurance company under a home insurance policy for a loss to property.
+</div>
+{% endblock %}

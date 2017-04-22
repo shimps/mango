@@ -32,5 +32,6 @@ urlpatterns = [
     url(r'^start/',views.start_page, name = 'start_page'),
     url(r'^settings/$',views.settings, name = 'settings'),
     url(r'^in_progress/$',views.in_progress, name = 'in_progress'),
+    url(r'^about_insurance/$',views.about_insurance, name = 'about_insurance'),
     url(r'^$',views.home, name = 'home'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
